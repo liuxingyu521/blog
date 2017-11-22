@@ -3,7 +3,7 @@ title: Xuer's Blog
 SEOTitle: Xuer Blog
 header-img: img/home-bg.jpg
 email: xuj_power@qq.com
-description: "--学而时习之，不亦说乎--"
+description: "-- 学而时习之，不亦说乎 --"
 keyword: "Web js 杂记"
 url: "http://liuxingyu521.github.io"              # your host, for absolute URL
 baseurl: "/blog"         # for example, '/blog' if your blog hosted on 'host/blog'
@@ -14,7 +14,7 @@ baseurl: "/blog"         # for example, '/blog' if your blog hosted on 'host/blo
 highlighter: rouge
 #permalink: pretty
 paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md","local_preview"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
 
