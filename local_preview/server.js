@@ -14,7 +14,7 @@ app.get('*', function(req, res){
 
 	// 重定向到404
 	// res.redirect(301, '/blog/404.html');
-	res.sendFile(file404);
+	res.status(404).sendFile(file404);
 })
 
 app.listen(4848);
