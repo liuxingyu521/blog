@@ -512,6 +512,9 @@ pre code {
   margin-top: 30px;
   margin-bottom: 8px;
 }
+.post-preview > a > .post-title small {
+  margin-left: 10px;
+}
 .post-preview > a > .post-subtitle {
   font-size: 15px;
   line-height: 1.3;
