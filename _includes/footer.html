@@ -114,6 +114,11 @@
                 $('#toc').removeClass('fixed');
             }
         })
+
+        // 点击目录跳转锚点，平滑滚动
+        $('#toc a').click(function(){
+            $('html').animate({scrollTop: $($(this).attr('href')).offset().top - 20}, 500)
+        })
     });
 </script>
 {% endif %}
