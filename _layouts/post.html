@@ -40,18 +40,24 @@ layout: default
 <article>
     <div class="container">
         <div class="row">
+            {% if page.withContent %}
+            <!-- slide 目录 -->
+            <div class="sidebar-content col-lg-3 col-md-3 hidden-xs hidden-sm Xuer-slide-content">
+                <div id="toc"></div>
+            </div>
+            {% endif %}
 
-    <!-- Post Container -->
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
+                col-lg-8
+                col-md-8
                 post-container">
 
 				{{ content }}
 
                 <hr>
 
-                {% if site.duoshuo_share && site.duoshuo_username %}
+                {% if site.duoshuo_share and site.duoshuo_username %}
                 <!-- 多说 Share start -->
                 </style>
                 <div class="ds-share"
@@ -113,7 +119,7 @@ layout: default
 
             </div>
 
-    <!-- Sidebar Container -->
+            <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
@@ -126,7 +132,7 @@ layout: default
                     <h5><a href="{{ site.baseurl }}/tags.html">FEATURED TAGS</a></h5>
                     <div class="tags">
         				{% for tag in site.tags %}
-                            {% if tag[1].size > {{site.featured-condition-size}} %}
+                            {% if tag[1].size > site.featured-condition-size %}
                 				<a href="{{ site.baseurl }}/tags.html#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
                                     {{ tag[0] }}
                                 </a>
@@ -147,6 +153,8 @@ layout: default
                 </ul>
                 {% endif %}
             </div>
+
+
         </div>
     </div>
 </article>

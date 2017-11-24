@@ -52,7 +52,7 @@ a img {
 }
 
 article{
-	overflow-x : hidden;
+	overflow : hidden;
 }
 blockquote {
 	color: @gray;
@@ -986,4 +986,39 @@ body {
 }
 .page-fullscreen footer .copyright a:hover{
 	color: #ddd;
+}
+
+// Xuer blog 
+// add: slide content目录
+#toc{
+	top: 0;
+	transition: top 1s;
+	> i{
+		font-size: 20px;
+    font-weight: bold;
+    color: deepskyblue;
+	}
+	> ul{
+		list-style: none;
+		padding: 5px 15px;
+		> li{
+			overflow: hidden;
+			> a{
+		    font-size: 18px;
+		    font-weight: 500;
+		    color: #777;
+		    &:hover{
+			    color: #0085a1;
+		    }
+			}
+			ul{
+				list-style: none;
+				padding: 5px 15px;
+			}
+		} 
+	}
+}
+#toc.fixed{
+	position: fixed;
+	top: 40px;
 }

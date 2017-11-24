@@ -93,6 +93,31 @@
 <!-- Custom Theme JavaScript -->
 <script src="{{ "/js/Xuer-blog.min.js " | prepend: site.baseurl }}"></script>
 
+{% if page.withContent %}
+<script src="{{ site.baseurl }}/js/toc.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#toc').toc({ listType: 'ul' });
+
+        // 给目录增加滚动吸顶效果
+        // 使用.Xuer-slide-content类进行定位
+        $(window).scroll(function(){
+            var slideTop = $(".Xuer-slide-content").offset().top;
+            var bodySrollTop = $('html').scrollTop();
+
+            // 滚动距离大于元素距离，吸顶固定
+            if(bodySrollTop > slideTop){
+                $('#toc').addClass('fixed');
+            }
+            // 滚动距离小于元素距离，在回到原来文档位置
+            else{
+                $('#toc').removeClass('fixed');
+            }
+        })
+    });
+</script>
+{% endif %}
+
 
 <!-- async load function -->
 <script>
