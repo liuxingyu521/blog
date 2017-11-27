@@ -113,11 +113,31 @@
             else{
                 $('#toc').removeClass('fixed');
             }
+
+            // 页面滚动，目录也随着改变到当前索引
+            var contentLinks = $('#toc a'); // 获取所有目录链接
+            var winHeight = $(window).height();
+            var currentTop;
+
+            for(var i = 0, len = contentLinks.length; i < len; i++){
+                currentTop = $(contentLinks[i].hash).offset().top;
+                console.log(currentTop +'----' + bodySrollTop);
+                if((currentTop > bodySrollTop) && (currentTop < (bodySrollTop + winHeight))){
+                    console.log(contentLinks[i]);
+                    $('#toc a').removeClass('current');
+                    $(contentLinks[i]).addClass('current');
+                    break;
+                }
+            }
         })
 
         // 点击目录跳转锚点，平滑滚动
         $('#toc a').click(function(){
             $('html').animate({scrollTop: $(decodeURIComponent($(this).attr('href'))).offset().top - 20}, 500)
+            setTimeout(function(){
+                $('#toc a').removeClass('current');
+                $(this).addClass('current');
+            }.bind(this), 600)
         })
     });
 </script>

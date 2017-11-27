@@ -90,7 +90,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #0085a1;
+  color: #05bbe0;
 }
 a img:hover,
 a img:focus {
@@ -998,7 +998,10 @@ body {
   color: #777;
 }
 #toc > ul > li > a:hover {
-  color: #0085a1;
+  color: #05bbe0;
+}
+#toc > ul > li a.current {
+  color: #05bbe0;
 }
 #toc > ul > li ul {
   list-style: none;
