@@ -7,4 +7,5 @@ author:     "Xuer"
 header-img: "img/post-bg-first-record.jpg"
 tags:
     - 随心录
+comments: true
 ---
