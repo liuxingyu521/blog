@@ -907,6 +907,9 @@ body {
 /* Hux customize Style for Duoshuo */
 .comment {
   margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 .comment #ds-thread #ds-reset a.ds-like-thread-button {
   border: 1px solid #ddd;

@@ -120,10 +120,8 @@
             var currentTop;
 
             for(var i = 0, len = contentLinks.length; i < len; i++){
-                currentTop = $(contentLinks[i].hash).offset().top;
-                console.log(currentTop +'----' + bodySrollTop);
+                currentTop = $(decodeURIComponent(contentLinks[i].hash)).offset().top;
                 if((currentTop > bodySrollTop) && (currentTop < (bodySrollTop + winHeight))){
-                    console.log(contentLinks[i]);
                     $('#toc a').removeClass('current');
                     $(contentLinks[i]).addClass('current');
                     break;
