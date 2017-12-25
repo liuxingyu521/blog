@@ -203,6 +203,9 @@ pre code {
 .post-container ul ul {
   margin-bottom: 5px;
 }
+.post-container li {
+  word-break: break-word;
+}
 .post-container li p {
   margin: 0;
   margin-bottom: 5px;
