@@ -12,7 +12,40 @@
 
     {% include footer.html %}
 
+<!-- 添加页面切换时的title展示 funny thing -->
+<script type="text/javascript">
+	(function(){
+		var hidden, visibilityChange;
+		window.title = document.title; 
 
+		if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
+		  hidden = "hidden";
+		  visibilityChange = "visibilitychange";
+		} else if (typeof document.msHidden !== "undefined") {
+		  hidden = "msHidden";
+		  visibilityChange = "msvisibilitychange";
+		} else if (typeof document.webkitHidden !== "undefined") {
+		  hidden = "webkitHidden";
+		  visibilityChange = "webkitvisibilitychange";
+		}
+
+		if(typeof document.addEventListener === "undefined" || typeof document[hidden] == "undefined" ){
+		    console.log('not support visibility API');
+		}else{
+		    document.addEventListener(visibilityChange, function(){
+		        if(document[hidden]){
+		            document.title = '麻麻喊你回家吃饭啦';
+		        }else{
+		            document.title = "欢迎回来 -_<";
+		            
+		            setTimeout(function(){
+		                document.title = title;
+		            }, 2000)
+		        }
+		    }, false)
+		}
+	})()
+</script>
 <!-- Image to hack wechat -->
 <img src="{{site.baseurl}}/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
