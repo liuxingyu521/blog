@@ -17,6 +17,6 @@ app.get('*', function(req, res){
 	res.status(404).sendFile(file404);
 })
 
-app.listen(4848);
+app.listen(9494);
 
-console.log('open http://localhost:4848/blog');
+console.log('open http://localhost:9494/blog');

@@ -1,6 +1,6 @@
 /*!
  * Xuer Blog v1.0.0 (http://liuxingyu521.github.io/blog)
- * Copyright 2017 Xuer
+ * Copyright 2018 Xuer
  */
 
 @media (min-width: 1200px) {
@@ -980,6 +980,22 @@ body {
 }
 .page-fullscreen footer .copyright a:hover {
   color: #ddd;
+}
+#tag-heading a.go-home {
+  display: inline-block;
+  background: #fff;
+  margin: 5px;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+.pop_funny_text {
+  display: inline-block;
+  position: fixed;
+  color: orange;
+  font-size: 24px;
+  opacity: 1;
+  user-select: none;
+  -webkit-user-select: none;
 }
 #toc {
   top: 0;
