@@ -13,7 +13,7 @@ baseurl: "/blog"         # for example, '/blog' if your blog hosted on 'host/blo
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
 #permalink: pretty
-paginate: 10
+paginate: 8
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md","local_preview"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
@@ -28,6 +28,9 @@ liveRe_open: false
 plugins: 
   - jekyll-paginate
   - jekyll-archives
+
+# 百度统计
+ba_track_id: "5b88c6f896b23b4414e88474e8eb3579"
 
 
 
