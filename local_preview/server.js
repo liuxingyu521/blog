@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var portFinder = require('portfinder');
 
 var app = express();
 
@@ -17,6 +18,13 @@ app.get('*', function(req, res){
 	res.status(404).sendFile(file404);
 })
 
-app.listen(9494);
+portFinder.basePort = 8888;
+portFinder.getPort(function(err, port){
+  if(err){
+    console.log('找到空闲端口失败：', err);
+  }else{
+    app.listen(port);
 
-console.log('open http://localhost:9494/blog');
+    console.log('open http://localhost:' + port + '/blog');
+  }
+})
