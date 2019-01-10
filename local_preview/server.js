@@ -21,7 +21,7 @@ app.get('*', function(req, res){
 portFinder.basePort = 8888;
 portFinder.getPort(function(err, port){
   if(err){
-    console.log('找到空闲端口失败：', err);
+    console.log('查找空闲端口失败：', err);
   }else{
     app.listen(port);
 

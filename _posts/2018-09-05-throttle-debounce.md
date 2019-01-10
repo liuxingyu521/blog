@@ -23,7 +23,7 @@ tags:
 ```javascript
 /**
  * 函数节流
- * @param  {function}  func        需要高频率执行函数
+ * @param  {function}  func        需要高频率执行函数 
  * @param  {Number}  delay       限制下次函数执行的延迟时间
  * @param  {Boolean} isFirstExec 第一次触发是否执行
  */
@@ -55,7 +55,7 @@ function throttle(func, delay, isFirstExec){
 
 另外一个时间差的版本
 
-```javascript
+```js
 function throttle2(func, delay, isFirstExec){
   var lastTime = (new Date()).getTime(),
       curTime = null;

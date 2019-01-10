@@ -41,6 +41,8 @@ ba_track_id: "5b88c6f896b23b4414e88474e8eb3579"
 markdown: kramdown
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
+  # syntax_highlighter: rouge
+    
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.

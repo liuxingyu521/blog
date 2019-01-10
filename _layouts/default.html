@@ -51,7 +51,7 @@
   */
   $(function(){
     $(document).on('click', function(e){
-        var upText = 'biu';
+        var upText = '❤️';
 
         var pop_dom = '<span class="pop_funny_text" style="top: ' + (e.clientY - 30) + 'px; left: ' + e.clientX + 'px;">' + upText + '</span>';
 
@@ -61,7 +61,12 @@
         }, 1000, 'swing', function(){
             $(this).remove();
         });
+
     })
+        
+    // prism js & hack
+    $('pre').addClass("line-numbers").css("white-space", "pre-wrap");
+    async('{{ "/js/prism.js" | prepend: site.baseurl }}')
   })
 </script>
 <!-- Image to hack wechat -->
