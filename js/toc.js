@@ -27,13 +27,16 @@
     }
 
     var headers = $(settings.headers).filter(function() {
-      // get all headers with an ID
-      var previousSiblingName = $(this).prev().attr( "name" );
-      if (!this.id && previousSiblingName) {
-        this.id = $(this).attr( "id", previousSiblingName.replace(/\./g, "-") );
-      }
-      return this.id;
-    }), output = $(this);
+          // get all headers with an ID
+          var previousSiblingName = $(this).prev().attr( "name" );
+          if (!this.id && previousSiblingName) {
+            this.id = $(this).attr( "id", previousSiblingName.replace(/\./g, "-") );
+          }
+          return this.id;
+        }), 
+        output = $(this);
+
+
     if (!headers.length || headers.length < settings.minimumHeaders || !output.length) {
       $(this).hide();
       return;

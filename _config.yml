@@ -1,7 +1,7 @@
 # Site settings
 title: Xuer's Blog
 SEOTitle: 学尔的博客 | Xuer Blog
-header-img: img/home-bg.jpg
+header-img: img/header-bg/home-bg.jpg
 email: xuj_power@qq.com
 description: "-- 学而时习之，不亦说乎 --"
 keyword: "Web js 杂记"
@@ -13,7 +13,6 @@ baseurl: "/blog"         # for example, '/blog' if your blog hosted on 'host/blo
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
 #permalink: pretty
-paginate: 8
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md","local_preview"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
@@ -27,11 +26,11 @@ liveRe_open: false
 # from PR#40, to support local preview for Jekyll 3.0
 plugins: 
   - jekyll-paginate
-  - jekyll-archives
+
+paginate: 6
 
 # 百度统计
 ba_track_id: "5b88c6f896b23b4414e88474e8eb3579"
-
 
 
 # Markdown settings
@@ -41,7 +40,6 @@ ba_track_id: "5b88c6f896b23b4414e88474e8eb3579"
 markdown: kramdown
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
-  # syntax_highlighter: rouge
     
 
 # Sidebar settings

@@ -4,11 +4,12 @@ title:      "Page Visibility API"
 subtitle:   "掌握当前文档的可见状态，快来了解这些 document 属性~~"
 date:       2017-12-04
 author:     "Xuer"
-header-img: "img/post-bg-first-record.jpg"
+header-img: "img/header-bg/post-bg-first-record.jpg"
 tags:
     - JavaScript
     - 知识点
 ---
+
 
 # Page Visibility API
 

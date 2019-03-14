@@ -4,7 +4,7 @@ title:      "npm常用命令参数使用"
 subtitle:   "npm命令系列···"
 date:       2018-01-02
 author:     "Xuer"
-header-img: "img/post-bg-first-record.jpg"
+header-img: "img/header-bg/post-bg-first-record.jpg"
 tags:
     - npm
     - 终端命令

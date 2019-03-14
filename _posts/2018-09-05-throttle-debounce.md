@@ -4,7 +4,7 @@ title:      "js函数节流 & 函数防抖"
 subtitle:   "限制函数调用频率的方法"
 date:       2018-09-05
 author:     "Xuer"
-header-img: "img/home-bg.jpg"
+header-img: "img/header-bg/home-bg.jpg"
 tags:
     - 技巧
     - JavaScript

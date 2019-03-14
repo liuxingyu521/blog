@@ -27,11 +27,12 @@
                     <li>
                         <a href="{{ site.baseurl }}/">Home</a>
                     </li>
-                    {% for page in site.pages %}{% if page.title %}
                     <li>
-                        <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                        <a href="{{ '/archive.html' | prepend: site.baseurl }}">ARCHIVE</a>
                     </li>
-                    {% endif %}{% endfor %}
+                    <li>
+                        <a href="{{ '/about.html' | prepend: site.baseurl }}">ABOUT</a>
+                    </li>
                     <li>
                         <a href="https://github.com/liuxingyu521">Github</a>
                     </li>

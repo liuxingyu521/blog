@@ -4,7 +4,7 @@ title:      "禁止微信h5下拉显示域名"
 subtitle:   "工作中遇到的问题及解决办法"
 date:       2018-07-05
 author:     "Xuer"
-header-img: "img/home-bg.jpg"
+header-img: "img/header-bg/home-bg.jpg"
 tags:
     - 技巧
     - 填坑
