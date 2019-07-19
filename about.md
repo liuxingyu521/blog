@@ -8,9 +8,9 @@ header-img: "img/header-bg/about-bg.jpg"
 
 ```json
 {
-    name: "Xuer",
-    birth: "1995-03-22",
-    hobby: [
+    "name": "Xuer",
+    "birth": "1995-03-22",
+    "hobby": [
         "Coding",
         "Watching film",
         "Skate"
