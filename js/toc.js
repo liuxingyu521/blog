@@ -11,7 +11,8 @@
       showSpeed: 'slow', // set to 0 to deactivate effect
       classes: { list: '',
                  item: ''
-               }
+               },
+      wrapDomSelector: '.post-container'  // 要生成目录的内容dom结构选择器
     },
     settings = $.extend(defaults, options);
 
@@ -26,7 +27,7 @@
       return "<a href='#" + fixedEncodeURIComponent(header.id) + "'>" + innerText + "</a>";
     }
 
-    var headers = $(settings.headers).filter(function() {
+    var headers = $(settings.headers, $(settings.wrapDomSelector)).filter(function() {
           // get all headers with an ID
           var previousSiblingName = $(this).prev().attr( "name" );
           if (!this.id && previousSiblingName) {
@@ -35,7 +36,6 @@
           return this.id;
         }), 
         output = $(this);
-
 
     if (!headers.length || headers.length < settings.minimumHeaders || !output.length) {
       $(this).hide();
