@@ -123,9 +123,8 @@ $ scp -r ${本地文件路径} ${远程路径}
 
 ### 2. 端口相关
 
-1. 查看占用某个端口的进程
-
 ```shell
+# 1. 查看占用某个端口的进程
 $ lsof -i:3000
 #COMMAND   PID   USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
 #node    80820  user   13u  IPv6 0xb6cc6492b6278121      0t0  TCP *:hbci (LISTEN)
