@@ -6,7 +6,9 @@ https://github.com/kitian616/jekyll-TeXt-theme
   function queryString() {
     // This function is anonymous, is executed immediately and
     // the return value is assigned to QueryString!
-    var i = 0, queryObj = {}, pair;
+    var i = 0,
+      queryObj = {},
+      pair;
     var queryStr = window.location.search.substring(1);
     var queryArr = queryStr.split('&');
     for (i = 0; i < queryArr.length; i++) {
@@ -26,7 +28,7 @@ https://github.com/kitian616/jekyll-TeXt-theme
   }
 
   var setUrlQuery = (function() {
-    var baseUrl =  window.location.href.split('?')[0];
+    var baseUrl = window.location.href.split('?')[0];
     return function(query) {
       if (typeof query === 'string') {
         window.history.replaceState(null, '', baseUrl + query);
@@ -42,7 +44,7 @@ https://github.com/kitian616/jekyll-TeXt-theme
     var $tagShowAll = $tags.find('.tag-button--all');
     var $result = $('.js-result');
     var $sections = $result.find('section');
-    var sectionArticles = []
+    var sectionArticles = [];
     var $lastFocusButton = null;
     var sectionTopArticleIndex = [];
     var hasInit = false;
@@ -52,7 +54,8 @@ https://github.com/kitian616/jekyll-TeXt-theme
     });
 
     function init() {
-      var i, index = 0;
+      var i,
+        index = 0;
       for (i = 0; i < $sections.length; i++) {
         sectionTopArticleIndex.push(index);
         index += $sections.eq(i).find('.item').length;
@@ -60,7 +63,7 @@ https://github.com/kitian616/jekyll-TeXt-theme
       sectionTopArticleIndex.push(index);
     }
 
-    function searchButtonsByTag(_tag/*raw tag*/) {
+    function searchButtonsByTag(_tag /*raw tag*/) {
       if (!_tag) {
         return $tagShowAll;
       }
@@ -74,13 +77,16 @@ https://github.com/kitian616/jekyll-TeXt-theme
     function buttonFocus(target) {
       if (target) {
         target.addClass('focus');
-        $lastFocusButton && !$lastFocusButton.is(target) && $lastFocusButton.removeClass('focus');
+        $lastFocusButton &&
+          !$lastFocusButton.is(target) &&
+          $lastFocusButton.removeClass('focus');
         $lastFocusButton = target;
       }
     }
 
-    function tagSelect (tag/*raw tag*/, target) {
-      var result = {}, $articles;
+    function tagSelect(tag /*raw tag*/, target) {
+      var result = {},
+        $articles;
       var i, j, k, _tag;
 
       for (i = 0; i < sectionArticles.length; i++) {
@@ -90,11 +96,15 @@ https://github.com/kitian616/jekyll-TeXt-theme
             result[i] || (result[i] = {});
             result[i][j] = true;
           } else {
-            var tags = $articles.eq(j).data('tags').split(',');
+            var tags = $articles
+              .eq(j)
+              .data('tags')
+              .split(',');
             for (k = 0; k < tags.length; k++) {
               if (tags[k] === tag) {
                 result[i] || (result[i] = {});
-                result[i][j] = true; break;
+                result[i][j] = true;
+                break;
               }
             }
           }
@@ -113,8 +123,7 @@ https://github.com/kitian616/jekyll-TeXt-theme
         }
       }
 
-      hasInit || ($result.removeClass('d-none'), hasInit = true);
-
+      hasInit || ($result.removeClass('d-none'), (hasInit = true));
 
       if (target) {
         buttonFocus(target);
@@ -129,15 +138,15 @@ https://github.com/kitian616/jekyll-TeXt-theme
       }
     }
 
-    var query = queryString(), 
-        _tag = query.tag;
+    var query = queryString(),
+      _tag = query.tag;
 
-    init(); 
+    init();
     tagSelect(_tag);
 
-    $tags.on('click', 'a', function() {   /* only change */
+    $tags.on('click', 'a', function() {
+      /* only change */
       tagSelect($(this).data('encode'), $(this));
     });
-
   });
 })();

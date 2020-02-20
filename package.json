@@ -1,40 +1,40 @@
 {
-    "name": "xuer-blog",
-    "title": "Xuer Blog",
-    "version": "1.0.0",
-    "homepage": "http://liuxingyu521.github.io/blog",
-    "author": "Xuer",
-    "devDependencies": {
-        "cz-emoji": "^1.1.2",
-        "eslint": "^6.8.0",
-        "grunt": "~0.4.5",
-        "grunt-banner": "~0.2.3",
-        "grunt-contrib-less": "~0.11.4",
-        "grunt-contrib-uglify": "~0.5.1",
-        "grunt-contrib-watch": "~0.6.1",
-        "husky": ">=4",
-        "lint-staged": ">=10"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/liuxingyu521/blog"
-    },
-    "scripts": {},
-    "config": {
-        "commitizen": {
-            "path": "./node_modules/cz-emoji"
-        }
-    },
-    "license": "ISC",
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.js": [
-            "eslint --fix",
-            "git add"
-        ]
+  "name": "xuer-blog",
+  "title": "Xuer Blog",
+  "version": "1.0.0",
+  "homepage": "http://liuxingyu521.github.io/blog",
+  "author": "Xuer",
+  "devDependencies": {
+    "cz-emoji": "^1.1.2",
+    "eslint": "^6.8.0",
+    "grunt": "~0.4.5",
+    "grunt-banner": "~0.2.3",
+    "grunt-contrib-less": "~0.11.4",
+    "grunt-contrib-uglify": "~0.5.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "husky": ">=4",
+    "lint-staged": ">=10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liuxingyu521/blog"
+  },
+  "scripts": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-emoji"
     }
+  },
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  }
 }
