@@ -7,5 +7,9 @@
     "node": true,
     "browser": true
   },
+  "globals": {
+    "$": "readonly",
+    "jQuery": "readonly"
+  },
   "rules": {}
 }
