@@ -60,9 +60,9 @@ body {
      */
   font-family: -apple-system, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
+  overflow-x: hidden;
   font-size: 16px;
   color: #404040;
-  overflow-x: hidden;
 }
 p {
   margin: 30px 0;
@@ -79,8 +79,8 @@ h6 {
      */
   font-family: -apple-system, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
-  line-height: 1.1;
   font-weight: bold;
+  line-height: 1.1;
 }
 h4 {
   font-size: 21px;
@@ -100,10 +100,10 @@ article {
   overflow: hidden;
 }
 blockquote {
-  color: #808080;
-  font-style: italic;
+  margin: 20px 0;
   font-size: 0.95em;
-  margin: 20px 0 20px;
+  font-style: italic;
+  color: #808080;
 }
 blockquote p {
   margin: 0;
@@ -117,16 +117,16 @@ br + small.img-hint {
   margin-top: -40px;
 }
 img.shadow {
-  box-shadow: rgba(0, 0, 0, 0.258824) 0px 2px 5px 0px;
+  box-shadow: rgba(0, 0, 0, 0.258824) 0 2px 5px 0;
 }
 @media screen and (max-width: 768px) {
   select {
-    -webkit-appearance: none;
+    padding: 0 0.4em;
     margin-top: 15px;
     color: #337ab7;
-    border-color: #337ab7;
-    padding: 0em 0.4em;
     background: white;
+    border-color: #337ab7;
+    -webkit-appearance: none;
   }
 }
 .table th,
@@ -136,8 +136,8 @@ img.shadow {
 hr.small {
   max-width: 100px;
   margin: 15px auto;
-  border-width: 4px;
   border-color: white;
+  border-width: 4px;
 }
 pre,
 .table-responsive {
@@ -146,8 +146,8 @@ pre,
 pre code {
   display: block;
   width: auto;
-  white-space: pre;
   word-wrap: normal;
+  white-space: pre;
 }
 .post-container a {
   color: #337ab7;
@@ -216,71 +216,71 @@ pre code {
 .post-container li h4,
 .post-container li h5,
 .post-container li h6 {
-  line-height: 2;
   margin-top: 20px;
+  line-height: 2;
 }
 .d-none {
   display: none !important;
 }
 @media only screen and (max-width: 767px) {
   .navbar-default .navbar-collapse {
-    border: none;
-    background: white;
-    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
-    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;
-    border-radius: 2px;
-    width: 170px;
     float: right;
-    margin: 0px;
+    width: 170px;
+    margin: 0;
+    background: white;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.239216) 0 1px 4px;
   }
   #huxblog_navbar {
     opacity: 0;
-    transform: scaleX(0);
-    transform-origin: top right;
+    -webkit-transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
     transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
     -webkit-transform: scaleX(0);
+    transform: scaleX(0);
     -webkit-transform-origin: top right;
-    -webkit-transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: top right;
   }
   #huxblog_navbar a {
     font-size: 13px;
     line-height: 28px;
   }
   #huxblog_navbar .navbar-collapse {
-    height: 0px;
-    transform: scaleY(0);
-    transform-origin: top right;
+    height: 0;
+    -webkit-transition: -webkit-transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
     transition: transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
     -webkit-transform: scaleY(0);
+    transform: scaleY(0);
     -webkit-transform-origin: top right;
-    -webkit-transition: -webkit-transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: top right;
   }
   #huxblog_navbar li {
     opacity: 0;
-    transition: opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 205ms;
     -webkit-transition: opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 205ms;
+    transition: opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 205ms;
   }
   #huxblog_navbar.in {
-    transform: scaleX(1);
-    -webkit-transform: scaleX(1);
     opacity: 1;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
   }
   #huxblog_navbar.in .navbar-collapse {
-    transform: scaleY(1);
     -webkit-transform: scaleY(1);
+    transform: scaleY(1);
   }
   #huxblog_navbar.in li {
     opacity: 1;
   }
 }
 .navbar-custom {
-  background: none;
-  border: none;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   z-index: 3;
+  width: 100%;
+  background: none;
+  border: none;
   /* Hux learn from
      *     TypeIsBeautiful,
      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
@@ -292,10 +292,10 @@ pre code {
   display: inline-block;
 }
 .navbar-custom .navbar-brand a {
-  font-weight: 800;
-  color: white;
   height: 56px;
+  font-weight: 800;
   line-height: 25px;
+  color: white;
 }
 .navbar-custom .navbar-brand a:hover {
   color: rgba(255, 255, 255, 0.8);
@@ -307,14 +307,14 @@ pre code {
   border-radius: 50%;
 }
 .navbar-custom .navbar-brand a span {
-  vertical-align: middle;
   padding-left: 7px;
+  vertical-align: middle;
 }
 .navbar-custom .nav li a {
-  text-transform: uppercase;
   font-size: 12px;
-  line-height: 20px;
   font-weight: 800;
+  line-height: 20px;
+  text-transform: uppercase;
   letter-spacing: 1px;
 }
 .navbar-custom .nav li a:active {
@@ -329,17 +329,17 @@ pre code {
     font-size: 20px;
   }
   .navbar-custom .navbar-brand a {
-    color: white;
     padding: 20px;
     line-height: 20px;
+    color: white;
   }
   .navbar-custom .navbar-brand a:hover,
   .navbar-custom .navbar-brand a:focus {
     color: rgba(255, 255, 255, 0.8);
   }
   .navbar-custom .nav li a {
-    color: white;
     padding: 20px;
+    color: white;
   }
   .navbar-custom .nav li a:hover,
   .navbar-custom .nav li a:focus {
@@ -397,6 +397,8 @@ pre code {
   }
 }
 .intro-header {
+  margin-bottom: 0;
+  /* 0 on mobile, modify by Hux */
   background: no-repeat center center;
   background-color: #808080;
   background-attachment: scroll;
@@ -404,8 +406,6 @@ pre code {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  margin-bottom: 0px;
-  /* 0 on mobile, modify by Hux */
 }
 @media only screen and (min-width: 768px) {
   .intro-header {
@@ -451,16 +451,16 @@ pre code {
      */
   font-family: -apple-system, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
-  font-size: 18px;
-  line-height: 1.1;
   display: block;
-  font-weight: 300;
   margin: 10px 0 0;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.1;
 }
 .intro-header .site-heading p,
 .intro-header .page-heading p {
-  font-size: 18px;
   margin: 9px 0;
+  font-size: 18px;
 }
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading h1,
@@ -469,13 +469,13 @@ pre code {
   }
 }
 .intro-header .post-heading h1 {
-  font-size: 30px;
   margin-bottom: 24px;
+  font-size: 30px;
 }
 .intro-header .post-heading .subheading,
 .intro-header .post-heading .meta {
-  line-height: 1.1;
   display: block;
+  line-height: 1.1;
 }
 .intro-header .post-heading .subheading {
   /* Hux learn from
@@ -484,17 +484,17 @@ pre code {
      */
   font-family: -apple-system, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
-  font-size: 17px;
-  line-height: 1.4;
-  font-weight: normal;
   margin: 10px 0 30px;
   margin-top: -5px;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 1.4;
 }
 .intro-header .post-heading .meta {
   font-family: 'Lora', 'Times New Roman', serif;
+  font-size: 18px;
   font-style: italic;
   font-weight: 300;
-  font-size: 18px;
 }
 .intro-header .post-heading .meta a {
   color: #1340ff;
@@ -518,31 +518,31 @@ pre code {
   text-decoration: none;
 }
 .post-preview > a > .post-title {
-  font-size: 21px;
-  line-height: 1.3;
   margin-top: 30px;
   margin-bottom: 8px;
+  font-size: 21px;
+  line-height: 1.3;
 }
 .post-preview > a > .post-title small {
   margin-left: 10px;
 }
 .post-preview > a > .post-subtitle {
-  font-size: 15px;
-  line-height: 1.3;
   margin: 0;
-  font-weight: 300;
   margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.3;
 }
 .post-preview > .post-meta {
   font-family: 'Lora', 'Times New Roman', serif;
-  color: #808080;
+  margin-top: 0;
   font-size: 16px;
   font-style: italic;
-  margin-top: 0;
+  color: #808080;
 }
 .post-preview > .post-meta > a {
-  text-decoration: none;
   color: #404040;
+  text-decoration: none;
 }
 .post-preview > .post-meta > a:hover,
 .post-preview > .post-meta > a:focus {
@@ -551,9 +551,9 @@ pre code {
 }
 @media only screen and (min-width: 768px) {
   .post-preview > a > .post-title {
+    margin-bottom: 10px;
     font-size: 24px;
     line-height: 1.3;
-    margin-bottom: 10px;
   }
   .post-preview > a > .post-subtitle {
     font-size: 16px;
@@ -573,32 +573,32 @@ pre code {
   }
 }
 .section-heading {
-  font-size: 36px;
   margin-top: 60px;
+  font-size: 36px;
   font-weight: 700;
 }
 .caption {
-  text-align: center;
-  font-size: 14px;
-  padding: 10px;
-  font-style: italic;
-  margin: 0;
   display: block;
+  padding: 10px;
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 footer {
-  font-size: 20px;
   padding: 50px 0 65px;
+  font-size: 20px;
 }
 footer .list-inline {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 footer .copyright {
+  margin-bottom: 0;
   font-size: 14px;
   text-align: center;
-  margin-bottom: 0;
 }
 footer .copyright a {
   color: #337ab7;
@@ -608,40 +608,40 @@ footer .copyright a:focus {
   color: #0085a1;
 }
 .floating-label-form-group {
-  font-size: 14px;
   position: relative;
-  margin-bottom: 0;
   padding-bottom: 0.5em;
+  margin-bottom: 0;
+  font-size: 14px;
   border-bottom: 1px solid #eeeeee;
 }
 .floating-label-form-group input,
 .floating-label-form-group textarea {
-  z-index: 1;
   position: relative;
+  z-index: 1;
   padding-right: 0;
   padding-left: 0;
+  font-size: 1.5em;
+  resize: none;
+  background: none;
   border: none;
   border-radius: 0;
-  font-size: 1.5em;
-  background: none;
   box-shadow: none !important;
-  resize: none;
 }
 .floating-label-form-group label {
-  display: block;
-  z-index: 0;
   position: relative;
   top: 2em;
+  z-index: 0;
+  display: block;
   margin: 0;
   font-size: 0.85em;
   line-height: 1.764705882em;
   vertical-align: middle;
   vertical-align: baseline;
   opacity: 0;
-  -webkit-transition: top 0.3s ease,opacity 0.3s ease;
-  -moz-transition: top 0.3s ease,opacity 0.3s ease;
-  -ms-transition: top 0.3s ease,opacity 0.3s ease;
-  transition: top 0.3s ease,opacity 0.3s ease;
+  -webkit-transition: top 0.3s ease, opacity 0.3s ease;
+  -moz-transition: top 0.3s ease, opacity 0.3s ease;
+  -ms-transition: top 0.3s ease, opacity 0.3s ease;
+  transition: top 0.3s ease, opacity 0.3s ease;
 }
 .floating-label-form-group::not(:first-child) {
   padding-left: 14px;
@@ -664,26 +664,26 @@ form .row:first-child .floating-label-form-group {
      */
   font-family: -apple-system, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
-  text-transform: uppercase;
+  padding: 15px 25px;
   font-size: 14px;
   font-weight: 800;
+  text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 0;
-  padding: 15px 25px;
 }
 .btn-lg {
-  font-size: 16px;
   padding: 25px 35px;
+  font-size: 16px;
 }
 .btn-default:hover,
 .btn-default:focus {
+  color: white;
   background-color: #0085a1;
   border: 1px solid #0085a1;
-  color: white;
 }
 .pager {
+  padding: 0 !important;
   margin: 20px 0 0 !important;
-  padding: 0px !important;
 }
 .pager li > a,
 .pager li > span {
@@ -693,19 +693,19 @@ form .row:first-child .floating-label-form-group {
      */
   font-family: -apple-system, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
-  text-transform: uppercase;
+  padding: 10px;
   font-size: 13px;
   font-weight: 800;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 10px;
   background-color: white;
   border-radius: 0;
 }
 @media only screen and (min-width: 768px) {
   .pager li > a,
   .pager li > span {
-    font-size: 14px;
     padding: 15px 25px;
+    font-size: 14px;
   }
 }
 .pager li > a {
@@ -722,8 +722,8 @@ form .row:first-child .floating-label-form-group {
 .pager .disabled > a:focus,
 .pager .disabled > span {
   color: #808080;
-  background-color: #404040;
   cursor: not-allowed;
+  background-color: #404040;
 }
 ::-moz-selection {
   color: white;
@@ -753,25 +753,25 @@ body {
 .tags a,
 .tags .tag {
   display: inline-block;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 999em;
   padding: 0 10px;
-  color: #ffffff;
-  line-height: 24px;
-  font-size: 12px;
-  text-decoration: none;
   margin: 0 1px;
   margin-bottom: 6px;
+  font-size: 12px;
+  line-height: 24px;
+  color: #ffffff;
+  text-decoration: none;
   cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999em;
 }
 .tags a:hover,
 .tags .tag:hover,
 .tags a:active,
 .tags .tag:active {
   color: white;
-  border-color: white;
-  background-color: rgba(255, 255, 255, 0.4);
   text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-color: white;
 }
 @media only screen and (min-width: 768px) {
   .tags a,
@@ -788,12 +788,12 @@ body {
 .tags .tag.tag-button--all.focus,
 .tags a.tag-button--all:hover,
 .tags .tag.tag-button--all:hover {
-  background-color: #e4e4e4!important;
+  background-color: #e4e4e4 !important;
   box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.239216) 0 1px 4px;
 }
 .tags a.focus,
 .tags .tag.focus {
-  background-color: #0085a1!important;
+  background-color: #0085a1 !important;
 }
 .tags sup {
   padding-left: 5px;
@@ -807,23 +807,23 @@ body {
   }
 }
 #tag_cloud {
-  margin: 20px 0 15px 0;
+  margin: 20px 0 15px;
 }
 #tag_cloud a,
 #tag_cloud .tag {
-  font-size: 14px;
-  border: none;
-  line-height: 28px;
   margin: 0 2px;
   margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 28px;
   background: #dedede;
+  border: none;
 }
 #tag_cloud a:hover,
 #tag_cloud .tag:hover,
 #tag_cloud a:active,
 #tag_cloud .tag:active {
-  background-color: #0085a1 !important;
   color: #fff;
+  background-color: #0085a1 !important;
 }
 #tag_cloud a.tag-button--all,
 #tag_cloud .tag.tag-button--all {
@@ -834,7 +834,7 @@ body {
 #tag_cloud .tag.tag-button--all.focus,
 #tag_cloud a.tag-button--all:hover,
 #tag_cloud .tag.tag-button--all:hover {
-  background-color: #e4e4e4!important;
+  background-color: #e4e4e4 !important;
   box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.239216) 0 1px 4px;
 }
 @media only screen and (min-width: 768px) {
@@ -851,11 +851,11 @@ body {
   }
 }
 .t:first-child {
-  margin-top: 0px;
+  margin-top: 0;
 }
 .listing-seperator {
-  color: #0085a1;
   font-size: 21px !important;
+  color: #0085a1;
 }
 .listing-seperator::before {
   margin-right: 5px;
@@ -882,9 +882,9 @@ body {
   position: relative;
 }
 .one-tag-list .post-preview > a .post-title {
+  margin-top: 20px;
   font-size: 16px;
   font-weight: 400;
-  margin-top: 20px;
 }
 .one-tag-list .post-preview > a .post-subtitle {
   font-size: 12px;
@@ -892,8 +892,8 @@ body {
 .one-tag-list .post-preview > .post-meta {
   position: absolute;
   right: 5px;
-  bottom: 0px;
-  margin: 0px;
+  bottom: 0;
+  margin: 0;
   font-size: 12px;
   line-height: 12px;
 }
@@ -912,14 +912,14 @@ body {
     font-size: 18px;
   }
 }
-/* Tags support End*/
+/* Tags support End */
 /* Hux make all img responsible in post-container */
 .post-container img {
   display: block;
   max-width: 100%;
   height: auto;
+  margin: 1.5em auto 1.6em;
   border: 5px solid #e4d5b4;
-  margin: 1.5em auto 1.6em auto;
   border-radius: 8px;
 }
 /* Hux Optimize UserExperience */
@@ -932,55 +932,55 @@ body {
 }
 /* customize Style for navBar button */
 .navbar-default .navbar-toggle {
-  border-color: transparent;
   padding: 19px 16px;
   margin-top: 2px;
   margin-right: 2px;
   margin-bottom: 2px;
+  border-color: transparent;
   border-radius: 50%;
 }
 .navbar-default .navbar-toggle .icon-bar {
   width: 18px;
-  border-radius: 0px;
   background-color: white;
+  border-radius: 0;
 }
 .navbar-default .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 3px;
 }
 .page-fullscreen .intro-header {
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 }
 .page-fullscreen #tag-heading {
   position: fixed;
-  left: 0;
   top: 0;
-  padding-bottom: 150px;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
   width: 100%;
   height: 100%;
-  display: -webkit-box;
+  padding-bottom: 150px;
+  -webkit-flex-direction: column;
+  flex-direction: column;
   -webkit-box-orient: vertical;
   -webkit-box-pack: center;
   -webkit-box-align: center;
-  display: -webkit-flex;
   -webkit-align-items: center;
   -webkit-justify-content: center;
-  -webkit-flex-direction: column;
-  display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 .page-fullscreen footer {
   position: absolute;
-  width: 100%;
   bottom: 0;
+  width: 100%;
   padding-bottom: 20px;
-  opacity: 0.6;
   color: #fff;
+  opacity: 0.6;
 }
 .page-fullscreen footer .copyright {
   color: #fff;
@@ -993,24 +993,24 @@ body {
 }
 #tag-heading a.go-home {
   display: inline-block;
-  background: #fff;
-  margin: 5px;
   padding: 0 5px;
+  margin: 5px;
+  background: #fff;
   border-radius: 3px;
 }
 .pop_funny_text {
-  display: inline-block;
   position: fixed;
-  color: orange;
+  display: inline-block;
   font-size: 24px;
-  opacity: 1;
-  user-select: none;
+  color: orange;
   -webkit-user-select: none;
+  user-select: none;
+  opacity: 1;
 }
 #toc {
   top: 0;
-  transition: top 1s;
   margin-top: 30px;
+  transition: top 1s;
 }
 #toc > i {
   font-size: 20px;
@@ -1018,8 +1018,8 @@ body {
   color: deepskyblue;
 }
 #toc > ul {
-  list-style: none;
   padding: 5px 15px;
+  list-style: none;
 }
 #toc > ul > li {
   overflow: hidden;
@@ -1039,8 +1039,8 @@ body {
   color: #05bbe0;
 }
 #toc > ul > li ul {
-  list-style: none;
   padding: 5px 15px;
+  list-style: none;
 }
 #toc.fixed {
   position: fixed;
@@ -1048,8 +1048,8 @@ body {
 }
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: black;
     color: #eee;
+    background-color: black;
   }
   body hr {
     border-color: #828282;
