@@ -1,6 +1,6 @@
 /*!
  * Xuer Blog v1.0.0 (http://liuxingyu521.github.io/blog)
- * Copyright 2019 Xuer
+ * Copyright 2020 Xuer
  */
 
 @media (min-width: 1200px) {
@@ -516,7 +516,6 @@ pre code {
 .post-preview > a:hover,
 .post-preview > a:focus {
   text-decoration: none;
-  color: #0085a1;
 }
 .post-preview > a > .post-title {
   font-size: 21px;
@@ -567,9 +566,6 @@ pre code {
   font-size: 13px;
   font-style: italic;
   color: #a3a3a3;
-}
-.post-content-preview:hover {
-  color: #0085a1;
 }
 @media only screen and (min-width: 768px) {
   .post-content-preview {
@@ -934,7 +930,7 @@ body {
 .navbar-default .navbar-toggle:active {
   background-color: rgba(255, 255, 255, 0.25);
 }
-/* Hux customize Style for navBar button */
+/* customize Style for navBar button */
 .navbar-default .navbar-toggle {
   border-color: transparent;
   padding: 19px 16px;
@@ -950,36 +946,6 @@ body {
 }
 .navbar-default .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 3px;
-}
-/* Hux customize Style for Duoshuo */
-.comment {
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 5px 10px;
-}
-.comment #ds-thread #ds-reset a.ds-like-thread-button {
-  border: 1px solid #ddd;
-  border-radius: 0px;
-  background: white;
-  box-shadow: none;
-  text-shadow: none;
-}
-.comment #ds-thread #ds-reset li.ds-tab a.ds-current {
-  border: 1px solid #ddd;
-  border-radius: 0px;
-  background: white;
-  box-shadow: none;
-  text-shadow: none;
-}
-.comment #ds-thread #ds-reset .ds-textarea-wrapper {
-  background: none;
-}
-.comment #ds-thread #ds-reset .ds-gradient-bg {
-  background: none;
-}
-#ds-smilies-tooltip ul.ds-smilies-tabs li a {
-  background: white !important;
 }
 .page-fullscreen .intro-header {
   position: fixed;
@@ -1058,6 +1024,9 @@ body {
 #toc > ul > li {
   overflow: hidden;
 }
+#toc > ul > li a {
+  text-decoration: none;
+}
 #toc > ul > li > a {
   font-size: 18px;
   font-weight: 500;
@@ -1076,4 +1045,41 @@ body {
 #toc.fixed {
   position: fixed;
   top: 60px;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: #eee;
+  }
+  body hr {
+    border-color: #828282;
+  }
+  .post-content-preview {
+    color: #eee;
+  }
+  .sidebar-container h5 a {
+    color: #fff !important;
+  }
+  .post-preview a {
+    color: #0085a1;
+  }
+  .post-preview:hover .post-content-preview {
+    color: #337ab7;
+  }
+  .tags a:hover {
+    background-color: #fff;
+  }
+  #toc a {
+    color: #ccc;
+  }
+  #toc a:hover {
+    color: #05bbe0;
+  }
+  .listing-seperator {
+    color: #fff;
+  }
+  .one-tag-list .post-preview:hover h2,
+  .one-tag-list .post-preview:hover h3 {
+    color: #337ab7;
+  }
 }
