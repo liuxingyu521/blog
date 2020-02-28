@@ -1,2 +1,3 @@
 node_modules/*
-js/*min.js
+js/toc.min.js
+js/xuer-blog.min.js

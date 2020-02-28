@@ -147,3 +147,59 @@
     render[settings.showEffect]();
   };
 })(jQuery);
+
+/**
+ * 给目录增加滚动吸顶效果
+ * 使用.Xuer-slide-content类进行定位
+ */
+$(document).ready(function() {
+  $('#toc').toc({
+    listType: 'ul',
+    wrapDomSelector: '.post-container',
+  });
+
+  // 给目录增加滚动吸顶效果
+  // 使用.Xuer-slide-content类进行定位
+  $(window).scroll(function() {
+    var slideTop = $('.Xuer-slide-content').offset().top;
+    var bodySrollTop = $(document).scrollTop();
+
+    // 滚动距离大于元素距离，吸顶固定
+    if (bodySrollTop > slideTop) {
+      $('#toc').addClass('fixed');
+    }
+    // 滚动距离小于元素距离，在回到原来文档位置
+    else {
+      $('#toc').removeClass('fixed');
+    }
+
+    // 页面滚动，目录也随着改变到当前索引
+    var contentLinks = $('#toc a'); // 获取所有目录链接
+    var winHeight = $(window).height();
+    var currentTop;
+
+    for (var i = 0, len = contentLinks.length; i < len; i++) {
+      currentTop = $(decodeURIComponent(contentLinks[i].hash)).offset().top;
+      if (currentTop > bodySrollTop && currentTop < bodySrollTop + winHeight) {
+        $('#toc a').removeClass('current');
+        $(contentLinks[i]).addClass('current');
+        break;
+      }
+    }
+  });
+
+  // 点击目录跳转锚点，平滑滚动
+  $('#toc a').click(function() {
+    $('html').animate(
+      { scrollTop: $(decodeURIComponent($(this).attr('href'))).offset().top - 20 },
+      500
+    );
+    setTimeout(
+      function() {
+        $('#toc a').removeClass('current');
+        $(this).addClass('current');
+      }.bind(this),
+      600
+    );
+  });
+});

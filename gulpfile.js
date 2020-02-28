@@ -6,14 +6,16 @@ const csso = require('gulp-csso');
 const uglify = require('gulp-uglify');
 const del = require('del');
 
+const originJsPaths = ['./js/xuer-blog.js', './js/toc.js'];
+const delJsPaths = ['./js/xuer-blog.min.js', './js/toc.min.js'];
+const delCssPaths = ['./css/xuer-blog.css', './css/xuer-blog.min.css'];
+
 /**
  * 清除之前生成的旧文件
  * @param {string} delType 删除类型
  */
 const delTask = delType =>
   function delTask() {
-    const delCssPaths = ['./css/xuer-blog.css', './css/xuer-blog.min.css'];
-    const delJsPaths = ['./js/xuer-blog.min.js'];
     const delTypeMap = {
       css: delCssPaths,
       js: delJsPaths,
@@ -49,9 +51,17 @@ const cssTask = function() {
  * 处理 js 文件
  */
 const jsTask = function() {
-  return src('./js/xuer-blog.js')
+  return src(originJsPaths)
     .pipe(uglify())
-    .pipe(rename('xuer-blog.min.js'))
+    .pipe(
+      rename(path => {
+        return {
+          dirname: path.dirname,
+          basename: path.basename + '.min',
+          extname: path.extname,
+        };
+      })
+    )
     .pipe(dest('./js/'));
 };
 
@@ -61,7 +71,7 @@ exports.js = jsTask;
 
 exports.watch = function() {
   watch(
-    './js/xuer-blog.js',
+    originJsPaths,
     {
       ignoreInitial: false,
     },
