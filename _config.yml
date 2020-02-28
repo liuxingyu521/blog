@@ -27,13 +27,13 @@ utterances_open: true
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
-plugins: 
+plugins:
   - jekyll-paginate
 
 paginate: 6
 
 # 百度统计
-ba_track_id: "5b88c6f896b23b4414e88474e8eb3579"
+ba_track_id: "30dc9ac994d2d8dca6df8cb91da3490a"
 
 
 # Markdown settings
@@ -43,7 +43,7 @@ ba_track_id: "5b88c6f896b23b4414e88474e8eb3579"
 markdown: kramdown
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
-    
+
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
