@@ -25,6 +25,18 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                      <div class="search-bar">
+                        <!-- <span class="search-bar__icon searchIcon"><i class="glyphicon glyphicon-search"></i></span> -->
+                        <input type="text" class="form-control searchInput" placeholder="搜索文章" />
+                        <div class="search-bar__result-box searchBox">
+                          <div class="search-bar__result-box__tip searchTip">开始搜索吧∼</div>
+                          <ul class="search-bar__result-box__list">
+
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
                         <a href="{{ site.baseurl }}/">Home</a>
                     </li>
                     <li>
@@ -52,9 +64,11 @@
     var $navbar = document.querySelector('#huxblog_navbar');
     var $collapse = document.querySelector('.navbar-collapse');
 
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
+    $toggle.addEventListener('click', function(){
+      handleMagic()
+    })
+    function handleMagic(closeFlag){
+        if ($navbar.className.indexOf('in') > 0 || closeFlag) {
         // CLOSE
             $navbar.className = " ";
             // wait until animation end.
