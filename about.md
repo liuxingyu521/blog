@@ -10,7 +10,7 @@ header-img: "img/header-bg/about-bg.jpg"
 {
     "name": "Xuer",
     "birth": "1995-03-22",
-    "hobby": [
+    "hobbies": [
         "Coding",
         "Watching film",
         "Skate"
