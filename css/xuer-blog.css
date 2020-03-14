@@ -1119,6 +1119,10 @@ body {
   position: fixed;
   top: 60px;
 }
+.total-blogs strong {
+  color: #2f9eff;
+  font-size: 20px;
+}
 @media (prefers-color-scheme: dark) {
   body {
     color: #eee;

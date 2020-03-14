@@ -28,14 +28,13 @@ header-img: "img/header-bg/tag-bg.jpg"
             <div id='tag_cloud' class="tags js-tags">
                 <a class="tag-button--all" data-encode="">
                   Show All
-                  <sup>37</sup>
                 </a>
                 {% capture tags %}
                 {% for tag in site.tags %}
                 <a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4,4 }}"
                    data-encode="{{ tag[0] | strip | url_encode }}"
                    class="tag-button"
-                   title="{{ tag[0] }}" 
+                   title="{{ tag[0] }}"
                    rel="{{ tag[1].size }}">
                    {{ tag[0] }}
                    <sup>{{ tag[1].size }}</sup>
@@ -45,7 +44,10 @@ header-img: "img/header-bg/tag-bg.jpg"
 
                 {{tags | split: "</a>" | sort | join: "</a>" | append: "</a>"}}
             </div>
-            
+
+            <!-- 博客总数统计 -->
+            <p class="total-blogs">🏆bingo ~ 已经输出 <strong>{{ site.posts.size }}</strong> 篇文章，继续努力💪</p>
+
             <!-- 列表 -->
             <div class="one-tag-list js-result d-none">
               {%- assign _sorted_list = site.posts -%}
@@ -89,7 +91,7 @@ header-img: "img/header-bg/tag-bg.jpg"
                 </div>
               {% endfor %}
 
-                
+
         </div>
     </div>
 </div>

@@ -25,8 +25,8 @@ header-img: "img/header-bg/tag-bg.jpg"
                 {% capture tags %}
                 {% for tag in site.tags %}
                 <a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4,4 }}"
-                   href="#{{ tag[0] }}" 
-                   title="{{ tag[0] }}" 
+                   href="#{{ tag[0] }}"
+                   title="{{ tag[0] }}"
                    rel="{{ tag[1].size }}">
                    {{ tag[0] }}
                    <sup>{{ tag[1].size }}</sup>
@@ -36,6 +36,10 @@ header-img: "img/header-bg/tag-bg.jpg"
 
                 {{tags | split: "</a>" | sort | join: "</a>" | append: "</a>"}}
             </div>
+
+            <!-- 博客总数统计 -->
+            <p class="total-blogs">🏆bingo ~ 已经输出 <strong>{{ site.posts.size }}</strong> 篇文章，继续努力💪</p>
+
             <!-- 标签列表 -->
             {% for tag in site.tags %}
             <div class="one-tag-list">
