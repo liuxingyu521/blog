@@ -368,7 +368,8 @@ pre code {
   z-index: 3;
   width: 100%;
   // materialize
-  background: none;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0px 1px 8px 0px rgba(143, 143, 143, 0.3);
   border: none;
   .sans-serif;
 
@@ -379,8 +380,6 @@ pre code {
       height: 56px;
       font-weight: 800;
       line-height: 25px;
-      // materialize
-      color: white;
 
       &:hover {
         color: rgba(255, 255, 255, 0.8);
@@ -421,14 +420,12 @@ pre code {
       font-size: 20px;
     }
 
-    background: transparent;
     border-bottom: 1px solid transparent;
 
     .navbar-brand {
       a {
         padding: 20px;
         line-height: 20px;
-        color: white;
 
         &:hover,
         &:focus {
@@ -441,11 +438,11 @@ pre code {
       li {
         a {
           padding: 20px;
-          color: white;
+          color: #333;
 
           &:hover,
           &:focus {
-            color: @white-faded;
+            // color: @white-faded;
           }
 
           &:active {
@@ -475,7 +472,6 @@ pre code {
       position: fixed;
       top: -61px;
       background-color: fade(white, 90%);
-      border-bottom: 1px solid darken(white, 5%);
       -webkit-transition: -webkit-transform 0.3s;
       -moz-transition: -moz-transform 0.3s;
       transition: transform 0.3s;
@@ -1288,61 +1284,129 @@ body {
   font-size: 20px;
 }
 
+// 白天/夜间 模式切换
+.theme-color-switcher {
+  width: 55px;
+  height: 26px;
+  border-radius: 25px;
+  float: right;
+  margin: 17px 5px 10px;
+  background: #ff7a36;
+  position: relative;
+  box-shadow: 0px 0px 5px 0px rgba(132, 132, 132, 0.8);
+
+  .status-ball {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+
+    .icon {
+      position: absolute;
+      top:0;
+      left: 0;
+      border-radius: 50%;
+    }
+
+    .moon {
+      visibility: hidden;
+      background-color: #000;
+    }
+  }
+
+  &.night {
+    background-color: #414e76;
+    .status-ball {
+      left: 31px;
+
+      .sun {
+        visibility: hidden;
+      }
+      .moon {
+        visibility: visible;
+      }
+    }
+
+  }
+}
+
 // 暗黑模式
 @media (prefers-color-scheme: dark) {
-  body {
+  .dark {
     color: #eee;
     background-color: black;
 
     hr {
       border-color: #828282;
     }
-  }
 
-  .post-content-preview {
-    color: #eee;
-  }
-
-  .sidebar-container h5 a {
-    color: #fff !important;
-  }
-
-  .post-preview {
-    a {
-      color: #0085a1;
-    }
-
-    &:hover {
-      .post-content-preview {
-        color: #337ab7;
+    .navbar-custom {
+      background-color: rgba(0,0,0,0.7);
+      .navbar-brand a,
+      .nav li a {
+        color: #fff;
       }
     }
-  }
 
-  .tags a:hover {
-    background-color: #fff;
-  }
+    .navbar-collapse {
+      // background-color: #222020;
+    }
 
-  #toc {
-    a {
-      color: #ccc;
+    .post-content-preview {
+      color: #eee;
+    }
+
+    .sidebar-container h5 a {
+      color: #fff !important;
+    }
+
+    .post-preview {
+      a {
+        color: #0085a1;
+      }
 
       &:hover {
-        color: #05bbe0;
+        .post-content-preview {
+          color: #337ab7;
+        }
+      }
+    }
+
+    .tags a:hover {
+      background-color: #fff;
+    }
+
+    #toc {
+      a {
+        color: #ccc;
+
+        &:hover {
+          color: #05bbe0;
+        }
+      }
+    }
+
+    .listing-seperator {
+      color: #fff;
+    }
+
+    .one-tag-list {
+      .post-preview:hover {
+        h2,
+        h3 {
+          color: #337ab7;
+        }
       }
     }
   }
 
-  .listing-seperator {
-    color: #fff;
-  }
 
-  .one-tag-list {
-    .post-preview:hover {
-      h2,
-      h3 {
-        color: #337ab7;
-      }
-    }
-  }
+
 }

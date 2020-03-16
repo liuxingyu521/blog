@@ -349,7 +349,8 @@ pre code {
   left: 0;
   z-index: 3;
   width: 100%;
-  background: none;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 1px 8px 0px rgba(143, 143, 143, 0.3);
   border: none;
   /* Hux learn from
      *     TypeIsBeautiful,
@@ -365,7 +366,6 @@ pre code {
   height: 56px;
   font-weight: 800;
   line-height: 25px;
-  color: white;
 }
 .navbar-custom .navbar-brand a:hover {
   color: rgba(255, 255, 255, 0.8);
@@ -392,7 +392,6 @@ pre code {
 }
 @media only screen and (min-width: 768px) {
   .navbar-custom {
-    background: transparent;
     border-bottom: 1px solid transparent;
   }
   .navbar-custom body {
@@ -401,7 +400,6 @@ pre code {
   .navbar-custom .navbar-brand a {
     padding: 20px;
     line-height: 20px;
-    color: white;
   }
   .navbar-custom .navbar-brand a:hover,
   .navbar-custom .navbar-brand a:focus {
@@ -409,11 +407,7 @@ pre code {
   }
   .navbar-custom .nav li a {
     padding: 20px;
-    color: white;
-  }
-  .navbar-custom .nav li a:hover,
-  .navbar-custom .nav li a:focus {
-    color: rgba(255, 255, 255, 0.8);
+    color: #333;
   }
   .navbar-custom .nav li a:active {
     background: none;
@@ -438,7 +432,6 @@ pre code {
     position: fixed;
     top: -61px;
     background-color: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid #f2f2f2;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;
@@ -1123,40 +1116,92 @@ body {
   color: #2f9eff;
   font-size: 20px;
 }
+.theme-color-switcher {
+  width: 55px;
+  height: 26px;
+  border-radius: 25px;
+  float: right;
+  margin: 17px 5px 10px;
+  background: #ff7a36;
+  position: relative;
+  box-shadow: 0px 0px 5px 0px rgba(132, 132, 132, 0.8);
+}
+.theme-color-switcher .status-ball {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+}
+.theme-color-switcher .status-ball .icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+.theme-color-switcher .status-ball .moon {
+  visibility: hidden;
+  background-color: #000;
+}
+.theme-color-switcher.night {
+  background-color: #414e76;
+}
+.theme-color-switcher.night .status-ball {
+  left: 31px;
+}
+.theme-color-switcher.night .status-ball .sun {
+  visibility: hidden;
+}
+.theme-color-switcher.night .status-ball .moon {
+  visibility: visible;
+}
 @media (prefers-color-scheme: dark) {
-  body {
+  .dark {
     color: #eee;
     background-color: black;
   }
-  body hr {
+  .dark hr {
     border-color: #828282;
   }
-  .post-content-preview {
-    color: #eee;
+  .dark .navbar-custom {
+    background-color: rgba(0, 0, 0, 0.7);
   }
-  .sidebar-container h5 a {
-    color: #fff !important;
-  }
-  .post-preview a {
-    color: #0085a1;
-  }
-  .post-preview:hover .post-content-preview {
-    color: #337ab7;
-  }
-  .tags a:hover {
-    background-color: #fff;
-  }
-  #toc a {
-    color: #ccc;
-  }
-  #toc a:hover {
-    color: #05bbe0;
-  }
-  .listing-seperator {
+  .dark .navbar-custom .navbar-brand a,
+  .dark .navbar-custom .nav li a {
     color: #fff;
   }
-  .one-tag-list .post-preview:hover h2,
-  .one-tag-list .post-preview:hover h3 {
+  .dark .post-content-preview {
+    color: #eee;
+  }
+  .dark .sidebar-container h5 a {
+    color: #fff !important;
+  }
+  .dark .post-preview a {
+    color: #0085a1;
+  }
+  .dark .post-preview:hover .post-content-preview {
+    color: #337ab7;
+  }
+  .dark .tags a:hover {
+    background-color: #fff;
+  }
+  .dark #toc a {
+    color: #ccc;
+  }
+  .dark #toc a:hover {
+    color: #05bbe0;
+  }
+  .dark .listing-seperator {
+    color: #fff;
+  }
+  .dark .one-tag-list .post-preview:hover h2,
+  .dark .one-tag-list .post-preview:hover h3 {
     color: #337ab7;
   }
 }

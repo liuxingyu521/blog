@@ -75,6 +75,36 @@
         </div>
     </div>
 </footer>
+<script type="text/javascript">
+  !function() {
+    function toggleDarkTheme(isDark) {
+      if (isDark) {
+        document.body.classList.add('dark')
+        document.querySelector('.themeSwitcher').classList.add('night')
+      } else {
+        document.body.classList.remove('dark')
+        document.querySelector('.themeSwitcher').classList.remove('night')
+      }
+    }
+
+    // 暗黑模式控制
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches){
+      toggleDarkTheme(true)
+    };
+
+    // 绑定按钮事件
+    var themeSwitcher = document.querySelector('.themeSwitcher')
+    themeSwitcher.addEventListener('click', function() {
+      if (this.classList.contains('night')) {
+        toggleDarkTheme(false)
+      } else {
+        toggleDarkTheme(true)
+      }
+    })
+
+  }()
+
+</script>
 <!-- jQuery -->
 <script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
 <!-- Bootstrap Core JavaScript -->
