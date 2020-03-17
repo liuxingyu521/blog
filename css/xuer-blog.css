@@ -306,6 +306,9 @@ pre code {
   overflow-y: scroll;
   z-index: 1;
 }
+.search-bar__result-box::-webkit-scrollbar {
+  display: none;
+}
 .search-bar__result-box__tip {
   font-style: italic;
   margin-bottom: 10px;
