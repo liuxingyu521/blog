@@ -84,16 +84,16 @@
       if (isDark) {
         document.body.classList.add('dark')
         document.querySelector('.themeSwitcher').classList.add('night')
-        localStorage.setItem(THEME_TYPE_KEY, 'dark')
+        sessionStorage.setItem(THEME_TYPE_KEY, 'dark')
       } else {
         document.body.classList.remove('dark')
         document.querySelector('.themeSwitcher').classList.remove('night')
-        localStorage.setItem(THEME_TYPE_KEY, 'light')
+        sessionStorage.setItem(THEME_TYPE_KEY, 'light')
       }
     }
 
-    // 优先从 localStorage 里取
-    var themeType = localStorage.getItem(THEME_TYPE_KEY)
+    // 优先从 sessionStorage 里取
+    var themeType = sessionStorage.getItem(THEME_TYPE_KEY)
     if (themeType) {
       toggleDarkTheme(themeType === 'dark')
     } else {
