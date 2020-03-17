@@ -368,10 +368,12 @@ pre code {
   z-index: 3;
   width: 100%;
   // materialize
-  background: rgba(255,255,255,0.9);
-  box-shadow: 0px 1px 8px 0px rgba(143, 143, 143, 0.3);
+  background-color: transparent;
   border: none;
-  .sans-serif;
+
+  &.is-fixed.is-visible {
+    box-shadow: 0px 1px 8px 0px rgba(143, 143, 143, 0.7);
+  }
 
   .navbar-brand {
     display: inline-block;
@@ -380,9 +382,10 @@ pre code {
       height: 56px;
       font-weight: 800;
       line-height: 25px;
+      color: #fff;
 
       &:hover {
-        color: rgba(255, 255, 255, 0.8);
+        color: #0085a1;
       }
 
       .avatar {
@@ -429,7 +432,7 @@ pre code {
 
         &:hover,
         &:focus {
-          color: @white-faded;
+          color: #0085a1;
         }
       }
     }
@@ -438,11 +441,11 @@ pre code {
       li {
         a {
           padding: 20px;
-          color: #333;
+          color: #fff;
 
           &:hover,
           &:focus {
-            // color: @white-faded;
+            color: #0085a1;
           }
 
           &:active {
@@ -482,7 +485,7 @@ pre code {
 
           &:hover,
           &:focus {
-            color: @brand-primary;
+            color: #0085a1;
           }
         }
       }
@@ -1348,15 +1351,20 @@ body {
     }
 
     .navbar-custom {
-      background-color: rgba(0,0,0,0.7);
       .navbar-brand a,
       .nav li a {
         color: #fff;
-      }
-    }
 
-    .navbar-collapse {
-      // background-color: #222020;
+        &:hover,
+        &:focus {
+          color: #0085a1;
+        }
+      }
+
+      &.is-fixed {
+        background-color: rgba(0,0,0,0.8);
+
+      }
     }
 
     .post-content-preview {

@@ -349,15 +349,11 @@ pre code {
   left: 0;
   z-index: 3;
   width: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0px 1px 8px 0px rgba(143, 143, 143, 0.3);
+  background-color: transparent;
   border: none;
-  /* Hux learn from
-     *     TypeIsBeautiful,
-     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-     */
-  font-family: -apple-system, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
-  line-height: 1.7;
+}
+.navbar-custom.is-fixed.is-visible {
+  box-shadow: 0px 1px 8px 0px rgba(143, 143, 143, 0.7);
 }
 .navbar-custom .navbar-brand {
   display: inline-block;
@@ -366,9 +362,10 @@ pre code {
   height: 56px;
   font-weight: 800;
   line-height: 25px;
+  color: #fff;
 }
 .navbar-custom .navbar-brand a:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: #0085a1;
 }
 .navbar-custom .navbar-brand a .avatar {
   width: 40px;
@@ -403,11 +400,15 @@ pre code {
   }
   .navbar-custom .navbar-brand a:hover,
   .navbar-custom .navbar-brand a:focus {
-    color: rgba(255, 255, 255, 0.8);
+    color: #0085a1;
   }
   .navbar-custom .nav li a {
     padding: 20px;
-    color: #333;
+    color: #fff;
+  }
+  .navbar-custom .nav li a:hover,
+  .navbar-custom .nav li a:focus {
+    color: #0085a1;
   }
   .navbar-custom .nav li a:active {
     background: none;
@@ -441,7 +442,7 @@ pre code {
   }
   .navbar-custom.is-fixed .navbar-brand a:hover,
   .navbar-custom.is-fixed .navbar-brand a:focus {
-    color: #0085A1;
+    color: #0085a1;
   }
   .navbar-custom.is-fixed .nav li .search-bar__icon {
     color: #404040;
@@ -1169,12 +1170,18 @@ body {
   .dark hr {
     border-color: #828282;
   }
-  .dark .navbar-custom {
-    background-color: rgba(0, 0, 0, 0.7);
-  }
   .dark .navbar-custom .navbar-brand a,
   .dark .navbar-custom .nav li a {
     color: #fff;
+  }
+  .dark .navbar-custom .navbar-brand a:hover,
+  .dark .navbar-custom .nav li a:hover,
+  .dark .navbar-custom .navbar-brand a:focus,
+  .dark .navbar-custom .nav li a:focus {
+    color: #0085a1;
+  }
+  .dark .navbar-custom.is-fixed {
+    background-color: rgba(0, 0, 0, 0.8);
   }
   .dark .post-content-preview {
     color: #eee;
