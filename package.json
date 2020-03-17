@@ -5,7 +5,7 @@
   "homepage": "http://liuxingyu521.github.io/blog",
   "author": "Xuer",
   "devDependencies": {
-    "cz-emoji": "^1.1.2",
+    "cz-emoji": "1.2.1",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
     "gulp": "^4.0.2",
