@@ -1162,53 +1162,57 @@ body {
 .theme-color-switcher.night .status-ball .moon {
   visibility: visible;
 }
-@media (prefers-color-scheme: dark) {
-  .dark {
-    color: #eee;
-    background-color: black;
+.dark {
+  color: #eee;
+  background-color: black;
+}
+.dark hr {
+  border-color: #828282;
+}
+.dark .navbar-custom .navbar-brand a,
+.dark .navbar-custom .nav li a {
+  color: #fff;
+}
+.dark .navbar-custom .navbar-brand a:hover,
+.dark .navbar-custom .nav li a:hover,
+.dark .navbar-custom .navbar-brand a:focus,
+.dark .navbar-custom .nav li a:focus {
+  color: #0085a1;
+}
+.dark .navbar-custom.is-fixed {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+@media only screen and (max-width: 767px) {
+  .dark .navbar-collapse {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 0px 6px #828282;
   }
-  .dark hr {
-    border-color: #828282;
-  }
-  .dark .navbar-custom .navbar-brand a,
-  .dark .navbar-custom .nav li a {
-    color: #fff;
-  }
-  .dark .navbar-custom .navbar-brand a:hover,
-  .dark .navbar-custom .nav li a:hover,
-  .dark .navbar-custom .navbar-brand a:focus,
-  .dark .navbar-custom .nav li a:focus {
-    color: #0085a1;
-  }
-  .dark .navbar-custom.is-fixed {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  .dark .post-content-preview {
-    color: #eee;
-  }
-  .dark .sidebar-container h5 a {
-    color: #fff !important;
-  }
-  .dark .post-preview a {
-    color: #0085a1;
-  }
-  .dark .post-preview:hover .post-content-preview {
-    color: #337ab7;
-  }
-  .dark .tags a:hover {
-    background-color: #fff;
-  }
-  .dark #toc a {
-    color: #ccc;
-  }
-  .dark #toc a:hover {
-    color: #05bbe0;
-  }
-  .dark .listing-seperator {
-    color: #fff;
-  }
-  .dark .one-tag-list .post-preview:hover h2,
-  .dark .one-tag-list .post-preview:hover h3 {
-    color: #337ab7;
-  }
+}
+.dark .post-content-preview {
+  color: #eee;
+}
+.dark .sidebar-container h5 a {
+  color: #fff !important;
+}
+.dark .post-preview a {
+  color: #0085a1;
+}
+.dark .post-preview:hover .post-content-preview {
+  color: #337ab7;
+}
+.dark .tags a:hover {
+  background-color: #fff;
+}
+.dark #toc a {
+  color: #ccc;
+}
+.dark #toc a:hover {
+  color: #05bbe0;
+}
+.dark .listing-seperator {
+  color: #fff;
+}
+.dark .one-tag-list .post-preview:hover h2,
+.dark .one-tag-list .post-preview:hover h3 {
+  color: #337ab7;
 }

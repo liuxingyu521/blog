@@ -1341,7 +1341,7 @@ body {
 }
 
 // 暗黑模式
-@media (prefers-color-scheme: dark) {
+// @media (prefers-color-scheme: dark) {
   .dark {
     color: #eee;
     background-color: black;
@@ -1364,6 +1364,14 @@ body {
       &.is-fixed {
         background-color: rgba(0,0,0,0.8);
 
+      }
+    }
+    .navbar-collapse {
+      @media only screen and (max-width: 767px) {
+        & {
+          background: rgba(0,0,0,0.9);
+          box-shadow: 0px 0px 6px #828282;
+        }
       }
     }
 
@@ -1417,4 +1425,4 @@ body {
 
 
 
-}
+// }

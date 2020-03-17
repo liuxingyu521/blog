@@ -75,22 +75,33 @@
         </div>
     </div>
 </footer>
+<!-- 暗黑主题切换控制 -->
 <script type="text/javascript">
   !function() {
+    var THEME_TYPE_KEY = 'theme-type';
+
     function toggleDarkTheme(isDark) {
       if (isDark) {
         document.body.classList.add('dark')
         document.querySelector('.themeSwitcher').classList.add('night')
+        localStorage.setItem(THEME_TYPE_KEY, 'dark')
       } else {
         document.body.classList.remove('dark')
         document.querySelector('.themeSwitcher').classList.remove('night')
+        localStorage.setItem(THEME_TYPE_KEY, 'light')
       }
     }
 
-    // 暗黑模式控制
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches){
-      toggleDarkTheme(true)
-    };
+    // 优先从 localStorage 里取
+    var themeType = localStorage.getItem(THEME_TYPE_KEY)
+    if (themeType) {
+      toggleDarkTheme(themeType === 'dark')
+    } else {
+      // 从媒体查询里获取是否暗黑模式
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches){
+        toggleDarkTheme(true)
+      };
+    }
 
     // 绑定按钮事件
     var themeSwitcher = document.querySelector('.themeSwitcher')
