@@ -75,47 +75,6 @@
         </div>
     </div>
 </footer>
-<!-- 暗黑主题切换控制 -->
-<script type="text/javascript">
-  !function() {
-    var THEME_TYPE_KEY = 'theme-type';
-
-    function toggleDarkTheme(isDark) {
-      if (isDark) {
-        document.body.classList.add('dark')
-        document.querySelector('.themeSwitcher').classList.add('night')
-        sessionStorage.setItem(THEME_TYPE_KEY, 'dark')
-      } else {
-        document.body.classList.remove('dark')
-        document.querySelector('.themeSwitcher').classList.remove('night')
-        sessionStorage.setItem(THEME_TYPE_KEY, 'light')
-      }
-    }
-
-    // 优先从 sessionStorage 里取
-    var themeType = sessionStorage.getItem(THEME_TYPE_KEY)
-    if (themeType) {
-      toggleDarkTheme(themeType === 'dark')
-    } else {
-      // 从媒体查询里获取是否暗黑模式
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches){
-        toggleDarkTheme(true)
-      };
-    }
-
-    // 绑定按钮事件
-    var themeSwitcher = document.querySelector('.themeSwitcher')
-    themeSwitcher.addEventListener('click', function() {
-      if (this.classList.contains('night')) {
-        toggleDarkTheme(false)
-      } else {
-        toggleDarkTheme(true)
-      }
-    })
-
-  }()
-
-</script>
 <!-- jQuery -->
 <script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
 <!-- Bootstrap Core JavaScript -->
