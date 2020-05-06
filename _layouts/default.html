@@ -65,7 +65,7 @@
     })
 
     // prism js & hack
-    $('pre').addClass("line-numbers").css("white-space", "pre-wrap");
+    $('pre').addClass("line-numbers").css("white-space", "no-wrap");
     async('{{ "/js/prism.min.js" | prepend: site.baseurl }}')
   })
 </script>
