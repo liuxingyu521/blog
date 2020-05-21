@@ -5,6 +5,7 @@
   "homepage": "http://liuxingyu521.github.io/blog",
   "author": "Xuer",
   "devDependencies": {
+    "commitizen": "^4.1.2",
     "cz-emoji": "1.2.1",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
@@ -23,7 +24,9 @@
     "type": "git",
     "url": "https://github.com/liuxingyu521/blog"
   },
-  "scripts": {},
+  "scripts": {
+    "commit": "git-cz"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-emoji"
