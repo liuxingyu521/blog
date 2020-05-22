@@ -1,22 +1,22 @@
 ---
-layout:     post
-title:      "常用命令记录"
-subtitle:   "收集一些日常工作中用到的实用命令"
-date:       2020-01-08
-author:     "Xuer"
-header-img: "img/header-bg/home-bg.jpg"
+layout: post
+title: '常用命令记录'
+subtitle: '收集一些日常工作中用到的实用命令'
+date: 2020-01-08
+author: 'Xuer'
+header-img: 'img/header-bg/home-bg.jpg'
 tags:
-    - 技巧
-    - 日常
-    - 命令
+  - 技巧
+  - 日常
+  - 命令
 withContent: true
 ---
 
 ## node 相关
 
-### 1. npm 
+### 1. npm
 
-npm 是node包管理工具，以下是一些常用命令
+npm 是 node 包管理工具，以下是一些常用命令
 
 ```shell
 # 1. 全局安装 node 包
@@ -43,7 +43,7 @@ $ npm unpublish ${包名}@${版本号}
 
 ### 2. nvm
 
-nvm 用来管理 node 版本，在不同的项目里可能使用不同的 node 版本，有了 nvm 可以在本地灵活切换 node 版本，确保项目运行OK
+nvm 用来管理 node 版本，在不同的项目里可能使用不同的 node 版本，有了 nvm 可以在本地灵活切换 node 版本，确保项目运行 OK
 
 ```shell
 # 安装 nvm, 去官网(https://github.com/nvm-sh/nvm) 查看执行以下命令，按照安装好的说明执行
@@ -56,7 +56,7 @@ $ nvm ls
 $ nvm use 12
 ```
 
-### 3. nrm 
+### 3. nrm
 
 nrm 用来管理 npm 源仓库，默认使用的是 npm 官方源(服务器在国外)，有时某个包比较慢，或者使用自建 npm 源仓库，可以使用 nrm 命令切换源
 
@@ -106,7 +106,7 @@ $ pm2 start ${脚本} -- -p 9999
 $ pm2 logs --lines 200
 ```
 
-## linux系统相关
+## linux 系统相关
 
 ### 1. 远程传输 - scp
 
@@ -130,4 +130,13 @@ $ lsof -i:3000
 #node    80820  user   13u  IPv6 0xb6cc6492b6278121      0t0  TCP *:hbci (LISTEN)
 ```
 
+### 3. ssh
 
+```shell
+# 生成 ssh 公秘钥，用于 ssh 认证
+$ ssh-keygen -t rsa -C "邮箱地址" -f "生成的文件名"
+
+# 因为 ssh 默认只会读取 .ssh/id_rsa 秘钥
+# 所以需要使用 ssh-add 手动把秘钥放到 ssh 的读取配置中
+$ ssh-add "秘钥路径"
+```
