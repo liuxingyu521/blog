@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
             </button>
             <div class="navbar-brand">
-                <a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/img/nav-avatar.jpg" class="avatar" alt="nav-avatar"><span>{{ site.title }}</span></a>
+                <a href="{{ site.baseurl }}/"><img src="{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/img/nav-avatar.jpg" class="avatar" alt="nav-avatar"><span>{{ site.title }}</span></a>
             </div>
             <!-- <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a> -->
         </div>

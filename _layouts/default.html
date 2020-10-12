@@ -66,11 +66,11 @@
 
     // prism js & hack
     $('pre').addClass("line-numbers").css("white-space", "no-wrap");
-    async('{{ "/js/prism.min.js" | prepend: site.baseurl }}')
+    async("{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/js/prism.min.js")
   })
 </script>
 <!-- Image to hack wechat -->
-<img src="{{site.baseurl}}/img/icon_wechat.png" width="0" height="0" />
+<img src="{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>

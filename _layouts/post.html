@@ -9,7 +9,7 @@ layout: default
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
+        background-image: url('{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
 </style>
 <header class="intro-header" >
@@ -186,7 +186,7 @@ layout: default
             <!-- Sidebar Container -->
             <div class="
                 col-lg-8 {% if page.withContent %} col-lg-offset-3 col-md-offset-3 {% else %}  col-lg-offset-2 col-md-offset-2 {% endif %}
-                col-md-8 
+                col-md-8
                 sidebar-container">
 
                 <!-- Featured Tags -->
@@ -265,7 +265,7 @@ layout: default
 {% if site.anchorjs %}
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    !!async && async("{{ site.baseurl }}/js/anchor.min.js",function(){
+    !!async && async("{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/js/anchor.min.js",function(){
         anchors.options = {
           visible: 'always',
           placement: 'right',

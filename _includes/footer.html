@@ -76,19 +76,19 @@
     </div>
 </footer>
 <!-- jQuery -->
-<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
+<script src="{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/js/jquery.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}"></script>
+<script src="{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/js/bootstrap.min.js"></script>
 <!-- Custom Theme JavaScript -->
-<script src="{{ "/js/xuer-blog.min.js " | prepend: site.baseurl }}"></script>
+<script src="{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/js/xuer-blog.min.js"></script>
 <!-- 归档 -->
 {% if page.title == 'Archive' %}
-<script src="{{ '/js/archive.js ' | prepend: site.baseurl }}"></script>
+<script src="{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/js/archive.js"></script>
 {% endif %}
 <!-- prism js -->
-<!-- <script defer src="{{ "/js/prism.js" | prepend: site.baseurl }}"></script> -->
+<!-- <script defer src="{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/js/prism.js"></script> -->
 {% if page.withContent %}
-<script src="{{ site.baseurl }}/js/toc.min.js"></script>
+<script src="{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/js/toc.min.js"></script>
 {% endif %}
 <!--
      Because of the native support for backtick-style fenced code blocks
@@ -111,7 +111,7 @@
 <script>
 // only load tagcloud.js in tag.html
 if ($('#tag_cloud').length !== 0) {
-    async ("{{ site.baseurl }}/js/jquery.tagcloud.js", function() {
+    async ("{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/js/jquery.tagcloud.js", function() {
         $.fn.tagcloud.defaults = {
             //size: {start: 1, end: 1, unit: 'em'},
             color: { start: '#bbbbee', end: '#0085a1' },
@@ -122,7 +122,7 @@ if ($('#tag_cloud').length !== 0) {
 </script>
 <!--fastClick.js -->
 <script>
-async ("{{ site.baseurl }}/js/fastclick.min.js", function() {
+async ("{% if site.isProd %}{{site.cdnPrefix}}{% else %}{{site.baseurl}}{%endif%}/js/fastclick.min.js", function() {
     var $nav = document.querySelector("nav");
     if ($nav) FastClick.attach($nav);
 })
