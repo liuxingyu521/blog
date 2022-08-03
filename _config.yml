@@ -5,7 +5,7 @@ header-img: img/header-bg/home-bg.jpg
 email: xuj_power@qq.com
 description: "-- 学而时习之，不亦说乎 --"
 keyword: "Web js 杂记"
-url: "http://liuxingyu521.github.io"              # your host, for absolute URL
+url: "https://xuer.tech"              # your host, for absolute URL
 baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 cdnPrefix: "https://cdn.jsdelivr.net/gh/liuxingyu521/blog"
 
@@ -27,7 +27,7 @@ disqus_open: false
 liveRe_open: false
 
 # utterances github issue comment
-utterances_open: false
+utterances_open: true
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
