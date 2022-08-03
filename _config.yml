@@ -27,7 +27,7 @@ disqus_open: false
 liveRe_open: false
 
 # utterances github issue comment
-utterances_open: true
+utterances_open: false
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
