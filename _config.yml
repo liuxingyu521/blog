@@ -6,7 +6,7 @@ email: xuj_power@qq.com
 description: "-- 学而时习之，不亦说乎 --"
 keyword: "Web js 杂记"
 url: "http://liuxingyu521.github.io"              # your host, for absolute URL
-baseurl: "/blog"         # for example, '/blog' if your blog hosted on 'host/blog'
+baseurl: "/"         # for example, '/blog' if your blog hosted on 'host/blog'
 cdnPrefix: "https://cdn.jsdelivr.net/gh/liuxingyu521/blog"
 
 # 是否是生产环境，用于线上cdn资源的替换
