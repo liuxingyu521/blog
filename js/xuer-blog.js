@@ -165,7 +165,7 @@ $(function() {
         }
       } else {
         $.ajax({
-          url: '/blog/feed.xml',
+          url: '/feed.xml',
           type: 'get',
         }).then(
           function(data) {

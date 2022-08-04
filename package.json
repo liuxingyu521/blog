@@ -25,7 +25,8 @@
     "url": "https://github.com/liuxingyu521/blog"
   },
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "dep-build": "gulp"
   },
   "config": {
     "commitizen": {
