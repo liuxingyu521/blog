@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+
+<html lang="en-GB">
+	<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Icons / Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="canonical" href="https://www.xuer.tech/posts/currying/">
+
+<!-- Primary Meta Tags -->
+<title>理解「柯里化」 • Xuer&#39;s Blog</title>
+<meta name="title" content="理解「柯里化」 • Xuer's Blog">
+<meta name="description" content="将带有多个参数的函数转换成只带一个参数的函数并返回">
+<meta name="author" content="Xuer">
+
+<!-- Theme Colour -->
+<meta name="theme-color" content="#fafafa">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解「柯里化」">
+<meta property="og:description" content="将带有多个参数的函数转换成只带一个参数的函数并返回">
+<meta property="og:url" content="https://www.xuer.tech/posts/currying/">
+<meta property="og:site_name" content="Xuer's Blog">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://www.xuer.tech/og-image/currying.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:author" content="Xuer"><meta property="article:published_time" content="2017-12-05T00:00:00.000Z">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://www.xuer.tech/posts/currying/">
+<meta property="twitter:title" content="理解「柯里化」">
+<meta property="twitter:description" content="将带有多个参数的函数转换成只带一个参数的函数并返回">
+<meta property="twitter:image" content="https://www.xuer.tech/og-image/currying.png">
+
+<!-- RSS auto-discovery -->
+<link rel="alternate" type="application/rss+xml" title="Xuer's Blog" href="/rss.xml">
+		<script>(function(){const siteConfig = {"author":"Xuer","title":"Xuer's Blog","description":"记录知识和生活","lang":"en-GB","ogLocale":"en_GB","githubUrl":"https://github.com/liuxingyu521/blog","themeColorLight":"#fafafa","themeColorDark":"#1d1f21","recentPosts":10};
+
+			const root = document.documentElement;
+			const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
+
+			// get user preference of dark mode, 1st local storage, 2nd browser
+			function getThemePreference() {
+				if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+					return localStorage.getItem("theme");
+				}
+				return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+			}
+
+			const isDark = getThemePreference() === "dark";
+			// watch document element class attribute and update user preference when it changes.
+			const observer = new MutationObserver(() => {
+				const rootIsDark = root.getAttribute('data-theme') === 'dark';
+				// set the meta attribute
+				colorThemeMetaTag.setAttribute(
+					"content",
+					siteConfig[rootIsDark ? "themeColorDark" : "themeColorLight"]
+				);
+
+        localStorage.setItem('theme', rootIsDark ? 'dark' : 'light')
+			});
+			observer.observe(root, { attributeFilter: ["data-theme"] });
+
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute("data-theme", isDark ? 'dark' : 'light');
+
+      } else
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme")
+        );
+		})();</script>
+    
+	<link rel="stylesheet" href="/_astro/_post_.c369ed24.css" /><script type="module" src="/_astro/hoisted.d84b49f0.js"></script>
+<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
+	<body>
+		<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-1.5 focus:left-1">skip to content
+</a>
+		
+
+<header id="main-header" class="group relative mb-10 flex items-center sm:pl-[4.5rem]">
+	<div class="flex sm:flex-col">
+		<a href="/" class="inline-flex items-center sm:relative sm:inline-block">
+      <img src="/_astro/headImg.dff5c9c7.png" alt="headImg" class="mr-3 h-16 w-16 sm:absolute sm:left-[-5.5rem] sm:top-[-0.8rem] sm:mr-0 sm:h-20 sm:w-20">
+			<span class="text-xl font-bold sm:text-2xl">Xuer&#39;s Blog</span>
+		</a>
+		<nav id="navigation-menu" class="absolute -inset-x-4 top-16 hidden flex-col items-end gap-y-4 rounded-md bg-[color:var(--theme-menu-bg)] py-4 text-accent shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:mt-1 sm:-ml-4 sm:flex sm:flex-row sm:items-center sm:divide-x sm:divide-dashed sm:divide-accent sm:rounded-none sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none" aria-label="Main menu">
+			<a href="/" class="py-4 px-4 sm:py-0 sm:underline-offset-4 sm:hover:underline self-center font-bold" style="" rel="prefetch" target="_self">
+						主页
+					</a><a href="/archive" class="py-4 px-4 sm:py-0 sm:underline-offset-4 sm:hover:underline self-center font-bold" style="" rel="prefetch" target="_self">
+						归档
+					</a><a href="/tags" class="py-4 px-4 sm:py-0 sm:underline-offset-4 sm:hover:underline self-center font-bold" style="" rel="prefetch" target="_self">
+						标签
+					</a><a href="/rss.xml" class="py-4 px-4 sm:py-0 sm:underline-offset-4 sm:hover:underline self-center font-bold" style="" rel="prefetch" target="_blank">
+						RSS
+					</a>
+		</nav>
+	</div>
+	
+
+<theme-toggle class="ml-auto">
+	<button type="button" id="toggle-theme" class="group relative h-9 w-9 rounded-md bg-zinc-200 p-2 ring-zinc-400 transition-all hover:ring-2 dark:bg-zinc-700" data-toggle-theme="dark,light" aria-label="Toggle Dark Mode">
+		<svg id="sun-svg" class="absolute top-1/2 left-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all group-aria-pressed:scale-100 group-aria-pressed:opacity-100" aria-hidden="true" focusable="false" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M22 12L23 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M12 2V1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M12 23V22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M20 20L19 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M20 4L19 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M4 20L5 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M4 4L5 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M1 12L2 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+		<svg id="moon-svg" class="absolute top-1/2 left-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all group-aria-[pressed=false]:scale-100 group-aria-[pressed=false]:opacity-100" aria-hidden="true" focusable="false" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"></circle>
+			<path d="M7.63262 3.06689C8.98567 3.35733 9.99999 4.56025 9.99999 6.00007C9.99999 7.65693 8.65685 9.00007 6.99999 9.00007C5.4512 9.00007 4.17653 7.82641 4.01685 6.31997" stroke="currentColor" stroke-width="1.5"></path>
+			<path d="M22 13.0505C21.3647 12.4022 20.4793 12 19.5 12C17.567 12 16 13.567 16 15.5C16 17.2632 17.3039 18.7219 19 18.9646" stroke="currentColor" stroke-width="1.5"></path>
+			<path d="M14.5 8.51L14.51 8.49889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M10 17C11.1046 17 12 16.1046 12 15C12 13.8954 11.1046 13 10 13C8.89543 13 8 13.8954 8 15C8 16.1046 8.89543 17 10 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</button>
+</theme-toggle>
+	<button id="toggle-navigation-menu" class="group relative ml-4 h-7 w-7 sm:invisible sm:hidden" type="button" aria-label="Open main menu" aria-expanded="false" aria-haspopup="menu">
+		<svg id="line-svg" class="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"></path>
+		</svg>
+		<svg id="cross-svg" class="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 text-accent opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100" class="text-accent" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+		</svg>
+	</button>
+</header>
+		<main id="main" class="flex-1">
+			<div class="sm:grid sm:grid-cols-[3fr_1fr] sm:items-start sm:gap-x-10">
+		<article class="break-words">
+			<div id="blog-hero"><h1 class="title mb-3 sm:mb-1">理解「柯里化」</h1>
+<time datetime="2017-12-05T00:00:00.000Z">2017-12-05</time>
+<div class="mt-1 sm:mt-0 sm:inline sm:before:content-['|']">
+			<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path d="M7.859 6h-2.834a2.025 2.025 0 0 0 -2.025 2.025v2.834c0 .537 .213 1.052 .593 1.432l6.116 6.116a2.025 2.025 0 0 0 2.864 0l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-6.117 -6.116a2.025 2.025 0 0 0 -1.431 -.593z"></path>
+				<path d="M17.573 18.407l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-7.117 -7.116"></path>
+				<path d="M6 9h-.01"></path>
+			</svg>
+			<a class="cactus-link inline-block before:content-['#']" aria-label="View more blogs with the tag javascript" href="/tags/javascript">javascript</a>, <a class="cactus-link inline-block before:content-['#']" aria-label="View more blogs with the tag 概念" href="/tags/概念">概念</a>
+		</div>
+<p class="mt-8">将带有多个参数的函数转换成只带一个参数的函数并返回</p></div>
+			<div class="prose prose-cactus max-w-[80ch] mt-12 prose-headings:font-semibold prose-headings:before:absolute prose-headings:before:-ml-6 prose-headings:before:text-accent prose-headings:before:content-['#'] prose-th:before:content-none">
+				<h2 id="什么是柯里化">什么是柯里化</h2>
+<blockquote>
+<p>柯里化（英语：Currying），是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数， 并且返回接受余下的参数而且返回结果的新函数的技术。</p>
+</blockquote>
+<h2 id="理解柯里化">理解柯里化</h2>
+<p>先来看一个工厂模式的例子：</p>
+<pre is:raw="" class="astro-code" style="background-color: #282A36; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #6272A4">// 工厂模式</span></span>
+<span class="line"><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">CarFactory</span><span style="color: #F8F8F2">(</span><span style="color: #FFB86C">modal</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">year</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">miles</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">	</span><span style="color: #FF79C6">var</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">car</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">modal</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">year</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">miles</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">		</span><span style="color: #BD93F9">this</span><span style="color: #F8F8F2">.modal </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> modal;</span></span>
+<span class="line"><span style="color: #F8F8F2">		</span><span style="color: #BD93F9">this</span><span style="color: #F8F8F2">.year </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> year;</span></span>
+<span class="line"><span style="color: #F8F8F2">		</span><span style="color: #BD93F9">this</span><span style="color: #F8F8F2">.miles </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> miles;</span></span>
+<span class="line"><span style="color: #F8F8F2">	};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F8F8F2">	</span><span style="color: #FF79C6">return</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6; font-style: italic">new</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">car</span><span style="color: #F8F8F2">(modal, year, miles);</span></span>
+<span class="line"><span style="color: #F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF79C6">var</span><span style="color: #F8F8F2"> miniCar </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">CarFactory</span><span style="color: #F8F8F2">(</span><span style="color: #E9F284">"</span><span style="color: #F1FA8C">mini</span><span style="color: #E9F284">"</span><span style="color: #F8F8F2">, </span><span style="color: #BD93F9">2017</span><span style="color: #F8F8F2">, </span><span style="color: #BD93F9">20000</span><span style="color: #F8F8F2">);</span></span>
+<span class="line"><span style="color: #F8F8F2">console.</span><span style="color: #50FA7B">log</span><span style="color: #F8F8F2">(mini.year); </span><span style="color: #6272A4">// 2017</span></span></code></pre>
+<p>上面的代码创建了一个简单的汽车工厂，它的作用是生产不同的车对象(object)，类似的，我们也可以把柯里化理解成 <strong>生产函数的函数工厂</strong>，生成具体的 function，再看下面的例子：</p>
+<pre is:raw="" class="astro-code" style="background-color: #282A36; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #6272A4">/*</span></span>
+<span class="line"><span style="color: #6272A4"> *   1. 一般的加法函数</span></span>
+<span class="line"><span style="color: #6272A4"> */</span></span>
+<span class="line"><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">add</span><span style="color: #F8F8F2">(</span><span style="color: #FFB86C">num1</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">num2</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">	</span><span style="color: #FF79C6">return</span><span style="color: #F8F8F2"> num1 </span><span style="color: #FF79C6">+</span><span style="color: #F8F8F2"> num2;</span></span>
+<span class="line"><span style="color: #F8F8F2">}</span></span>
+<span class="line"><span style="color: #50FA7B">add</span><span style="color: #F8F8F2">(</span><span style="color: #BD93F9">5</span><span style="color: #F8F8F2">, </span><span style="color: #BD93F9">4</span><span style="color: #F8F8F2">); </span><span style="color: #6272A4">// 9</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6272A4">/*</span></span>
+<span class="line"><span style="color: #6272A4"> *   2. 柯里化后的加法函数</span></span>
+<span class="line"><span style="color: #6272A4"> */</span></span>
+<span class="line"><span style="color: #6272A4">// 数字求和的函数生成器</span></span>
+<span class="line"><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">addGenerator</span><span style="color: #F8F8F2">(</span><span style="color: #FFB86C">num</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">	</span><span style="color: #6272A4">// 返回一个简单的函数，求两个数字的和，其中第一个数字来自生成器</span></span>
+<span class="line"><span style="color: #F8F8F2">	</span><span style="color: #FF79C6">return</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">otherNum</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">		</span><span style="color: #FF79C6">return</span><span style="color: #F8F8F2"> num </span><span style="color: #FF79C6">+</span><span style="color: #F8F8F2"> otherNum;</span></span>
+<span class="line"><span style="color: #F8F8F2">	};</span></span>
+<span class="line"><span style="color: #F8F8F2">}</span></span>
+<span class="line"><span style="color: #6272A4">// 根据函数生成器，生成不同加数因子的函数</span></span>
+<span class="line"><span style="color: #FF79C6">var</span><span style="color: #F8F8F2"> addFive </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">addGenerator</span><span style="color: #F8F8F2">(</span><span style="color: #BD93F9">5</span><span style="color: #F8F8F2">);</span></span>
+<span class="line"><span style="color: #FF79C6">var</span><span style="color: #F8F8F2"> addSix </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">addGenerator</span><span style="color: #F8F8F2">(</span><span style="color: #BD93F9">6</span><span style="color: #F8F8F2">);</span></span>
+<span class="line"><span style="color: #FF79C6">var</span><span style="color: #F8F8F2"> addSeven </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">addGenerator</span><span style="color: #F8F8F2">(</span><span style="color: #BD93F9">7</span><span style="color: #F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6272A4">// 使用新生成的函数</span></span>
+<span class="line"><span style="color: #50FA7B">addFive</span><span style="color: #F8F8F2">(</span><span style="color: #BD93F9">4</span><span style="color: #F8F8F2">); </span><span style="color: #6272A4">// 9</span></span>
+<span class="line"><span style="color: #50FA7B">addSix</span><span style="color: #F8F8F2">(</span><span style="color: #BD93F9">4</span><span style="color: #F8F8F2">); </span><span style="color: #6272A4">// 10</span></span></code></pre>
+<p>看了上述代码，发现柯里化后的步骤好像比一般的函数还要复杂，那有什么意义呢？其实心细的小伙伴可以发现，使用柯里化后的函数，它因为类似函数工厂，可以再次生成函数变种，而且这些变种和柯里化后的函数 <strong>有一个固定的参数联系</strong>，这在函数式编程中很有意义，为什么呢？接着看下面这个例子：</p>
+<pre is:raw="" class="astro-code" style="background-color: #282A36; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #6272A4">/*</span></span>
+<span class="line"><span style="color: #6272A4"> *   1. 普通绑定兼容函数</span></span>
+<span class="line"><span style="color: #6272A4"> */</span></span>
+<span class="line"><span style="color: #6272A4">// 封装不同浏览器的原生dom绑定事件函数</span></span>
+<span class="line"><span style="color: #FF79C6">var</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">addEvent</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">el</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">type</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">func</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">capture</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">	</span><span style="color: #FF79C6">if</span><span style="color: #F8F8F2"> (el.addEventListener) {</span></span>
+<span class="line"><span style="color: #F8F8F2">		el.</span><span style="color: #50FA7B">addEventListener</span><span style="color: #F8F8F2">(</span></span>
+<span class="line"><span style="color: #F8F8F2">			type,</span></span>
+<span class="line"><span style="color: #F8F8F2">			</span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">e</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">				func.</span><span style="color: #50FA7B">call</span><span style="color: #F8F8F2">(el, e);</span></span>
+<span class="line"><span style="color: #F8F8F2">			},</span></span>
+<span class="line"><span style="color: #F8F8F2">			capture</span></span>
+<span class="line"><span style="color: #F8F8F2">		);</span></span>
+<span class="line"><span style="color: #F8F8F2">	} </span><span style="color: #FF79C6">else</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">if</span><span style="color: #F8F8F2"> (el.attachEvent) {</span></span>
+<span class="line"><span style="color: #F8F8F2">		el.</span><span style="color: #50FA7B">attachEvent</span><span style="color: #F8F8F2">(</span><span style="color: #E9F284">"</span><span style="color: #F1FA8C">on</span><span style="color: #E9F284">"</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">+</span><span style="color: #F8F8F2"> type, </span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">e</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">			e </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> e </span><span style="color: #FF79C6">||</span><span style="color: #F8F8F2"> window.event; </span><span style="color: #6272A4">// IE下的event对象</span></span>
+<span class="line"><span style="color: #F8F8F2">			e.cancelBubble </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> capture </span><span style="color: #FF79C6">?</span><span style="color: #F8F8F2"> </span><span style="color: #BD93F9">true</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">:</span><span style="color: #F8F8F2"> </span><span style="color: #BD93F9">false</span><span style="color: #F8F8F2">;</span></span>
+<span class="line"><span style="color: #F8F8F2">			func.</span><span style="color: #50FA7B">call</span><span style="color: #F8F8F2">(el, e);</span></span>
+<span class="line"><span style="color: #F8F8F2">		});</span></span>
+<span class="line"><span style="color: #F8F8F2">	}</span></span>
+<span class="line"><span style="color: #F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6272A4">/*</span></span>
+<span class="line"><span style="color: #6272A4"> *   2. 使用柯里化后的绑定兼容函数</span></span>
+<span class="line"><span style="color: #6272A4"> */</span></span>
+<span class="line"><span style="color: #FF79C6">var</span><span style="color: #F8F8F2"> addEvent </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> (</span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> () {</span></span>
+<span class="line"><span style="color: #F8F8F2">	</span><span style="color: #FF79C6">if</span><span style="color: #F8F8F2"> (window.addEventListener) {</span></span>
+<span class="line"><span style="color: #F8F8F2">		</span><span style="color: #FF79C6">return</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">el</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">type</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">func</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">capture</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">			el.</span><span style="color: #50FA7B">addEventListener</span><span style="color: #F8F8F2">(</span></span>
+<span class="line"><span style="color: #F8F8F2">				type,</span></span>
+<span class="line"><span style="color: #F8F8F2">				</span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">e</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">					func.</span><span style="color: #50FA7B">call</span><span style="color: #F8F8F2">(el, e);</span></span>
+<span class="line"><span style="color: #F8F8F2">				},</span></span>
+<span class="line"><span style="color: #F8F8F2">				captrue</span></span>
+<span class="line"><span style="color: #F8F8F2">			);</span></span>
+<span class="line"><span style="color: #F8F8F2">		};</span></span>
+<span class="line"><span style="color: #F8F8F2">	} </span><span style="color: #FF79C6">else</span><span style="color: #F8F8F2"> {</span></span>
+<span class="line"><span style="color: #F8F8F2">		</span><span style="color: #FF79C6">return</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">el</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">type</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">func</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">capture</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">			el.</span><span style="color: #50FA7B">attachEvent</span><span style="color: #F8F8F2">(</span><span style="color: #E9F284">"</span><span style="color: #F1FA8C">on</span><span style="color: #E9F284">"</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">+</span><span style="color: #F8F8F2"> type, </span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">e</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">				e </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> e </span><span style="color: #FF79C6">||</span><span style="color: #F8F8F2"> window.event;</span></span>
+<span class="line"><span style="color: #F8F8F2">				e.cancelBubble </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> capture </span><span style="color: #FF79C6">?</span><span style="color: #F8F8F2"> </span><span style="color: #BD93F9">true</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">:</span><span style="color: #F8F8F2"> </span><span style="color: #BD93F9">false</span><span style="color: #F8F8F2">;</span></span>
+<span class="line"><span style="color: #F8F8F2">				func.</span><span style="color: #50FA7B">call</span><span style="color: #F8F8F2">(el, e);</span></span>
+<span class="line"><span style="color: #F8F8F2">			});</span></span>
+<span class="line"><span style="color: #F8F8F2">		};</span></span>
+<span class="line"><span style="color: #F8F8F2">	}</span></span>
+<span class="line"><span style="color: #F8F8F2">})();</span></span></code></pre>
+<p>看了上述代码，发现什么不同了吗？是不是柯里化做了一个返回函数的动作，对没错，柯里化后的 addEvent 函数不需要每次去判断浏览器类型，因为它把判断浏览器的动作作为固定参数锁定了，相当于</p>
+<pre is:raw="" class="astro-code" style="background-color: #282A36; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #6272A4">// 在标准浏览器下</span></span>
+<span class="line"><span style="color: #50FA7B">addEvent</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">el</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">type</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">func</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">capture</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">	el.</span><span style="color: #50FA7B">addEventListener</span><span style="color: #F8F8F2">(</span></span>
+<span class="line"><span style="color: #F8F8F2">		type,</span></span>
+<span class="line"><span style="color: #F8F8F2">		</span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">e</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">			func.</span><span style="color: #50FA7B">call</span><span style="color: #F8F8F2">(el, e);</span></span>
+<span class="line"><span style="color: #F8F8F2">		},</span></span>
+<span class="line"><span style="color: #F8F8F2">		captrue</span></span>
+<span class="line"><span style="color: #F8F8F2">	);</span></span>
+<span class="line"><span style="color: #F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6272A4">// 在IE浏览器下</span></span>
+<span class="line"><span style="color: #50FA7B">addEvent</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">el</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">type</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">func</span><span style="color: #F8F8F2">, </span><span style="color: #FFB86C">capture</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">	el.</span><span style="color: #50FA7B">attachEvent</span><span style="color: #F8F8F2">(</span><span style="color: #E9F284">"</span><span style="color: #F1FA8C">on</span><span style="color: #E9F284">"</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">+</span><span style="color: #F8F8F2"> type, </span><span style="color: #FF79C6">function</span><span style="color: #F8F8F2"> (</span><span style="color: #FFB86C">e</span><span style="color: #F8F8F2">) {</span></span>
+<span class="line"><span style="color: #F8F8F2">		e </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> e </span><span style="color: #FF79C6">||</span><span style="color: #F8F8F2"> window.event;</span></span>
+<span class="line"><span style="color: #F8F8F2">		e.cancelBubble </span><span style="color: #FF79C6">=</span><span style="color: #F8F8F2"> capture </span><span style="color: #FF79C6">?</span><span style="color: #F8F8F2"> </span><span style="color: #BD93F9">true</span><span style="color: #F8F8F2"> </span><span style="color: #FF79C6">:</span><span style="color: #F8F8F2"> </span><span style="color: #BD93F9">false</span><span style="color: #F8F8F2">;</span></span>
+<span class="line"><span style="color: #F8F8F2">		func.</span><span style="color: #50FA7B">call</span><span style="color: #F8F8F2">(el, e);</span></span>
+<span class="line"><span style="color: #F8F8F2">	});</span></span>
+<span class="line"><span style="color: #F8F8F2">};</span></span></code></pre>
+<p>因此，柯里化声称“如果你固定某些参数，你将得到接受余下参数的一个函数”</p>
+<p>怎么样，看完本篇教程理解了吗，那就在实践中运用柯里化吧！</p>
+<ul>
+<li>参考文章
+<ul>
+<li><a href="https://github.com/ChenChenJoke/JokerWebFont/tree/master/currying">https://github.com/ChenChenJoke/JokerWebFont/tree/master/currying</a></li>
+<li><a href="http://www.css88.com/archives/7833#currying">http://www.css88.com/archives/7833#currying</a></li>
+</ul>
+</li>
+</ul>
+			</div>
+		</article>
+		<aside class="hidden text-right sm:sticky sm:top-20 sm:block">
+			<h2 class="font-semibold">目录</h2>
+			<ul class="mt-4 space-y-2 text-xs">
+				<li class="line-clamp-2 hover:text-accent">
+							<a href="#什么是柯里化" aria-label="Scroll to section: 什么是柯里化">
+								<span>&#35;</span> 什么是柯里化
+							</a>
+						</li><li class="line-clamp-2 hover:text-accent">
+							<a href="#理解柯里化" aria-label="Scroll to section: 理解柯里化">
+								<span>&#35;</span> 理解柯里化
+							</a>
+						</li>
+			</ul>
+		</aside>
+	</div><button id="to-top-btn" class="z-90 fixed bottom-8 right-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-zinc-200 text-3xl opacity-0 transition-all duration-300 hover:border-zinc-400 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 dark:bg-zinc-700 sm:right-8 sm:h-12 sm:w-12" aria-label="Back to Top" data-show="false"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
+		</svg>
+	</button>
+		</main>
+		<footer class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pt-20 pb-4 text-center align-top text-gray-500 sm:flex-row sm:justify-between sm:text-xs">
+	<div class="mr-0 sm:mr-4">
+		Copyright &copy; 2023
+		<span aria-label="heart emoji"> 💌 </span>
+		Xuer
+	</div>
+  <div class="flex flex-wrap justify-center items-center gap-x-4 sm:items-center">
+	<p>Social Links → </p>
+	<ul class="flex flex-1 items-center gap-x-4 sm:flex-initial">
+		<li>
+			<a class="inline-block p-2 sm:hover:text-link" href="https://github.com/liuxingyu521" target="_blank" rel="noopener noreferrer">
+				<svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+					<path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5">
+					</path>
+				</svg>
+				<span class="sr-only">Github</span>
+			</a>
+		</li>
+		<li>
+			<a class="inline-block p-2 sm:hover:text-link" href="https://codepen.io/liuxingyu" target="_blank" rel="noopener noreferrer">
+        <svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M3 15l9 6l9 -6l-9 -6l-9 6"></path>
+          <path d="M3 9l9 6l9 -6l-9 -6l-9 6"></path>
+          <line x1="3" y1="9" x2="3" y2="15"></line>
+          <line x1="21" y1="9" x2="21" y2="15"></line>
+          <line x1="12" y1="3" x2="12" y2="9"></line>
+          <line x1="12" y1="15" x2="12" y2="21"></line>
+        </svg>
+				<span class="sr-only">Twitter</span>
+			</a>
+		</li>
+		<li>
+			<a class="inline-block p-2 sm:hover:text-link" href="mailto:xuj_power@qq.com">
+				<svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+					<rect x="3" y="5" width="18" height="14" rx="2"></rect>
+					<polyline points="3 7 12 13 21 7"></polyline>
+				</svg>
+				<span class="sr-only">Email</span>
+			</a>
+		</li>
+	</ul>
+</div>
+</footer>
+	</body></html>

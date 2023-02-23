@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+
+<html lang="en-GB">
+	<head>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Icons / Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="canonical" href="https://www.xuer.tech/posts/zsh-theme-spaceship/">
+
+<!-- Primary Meta Tags -->
+<title>介绍一款 zsh 终端超实用主题：「spaceship」 • Xuer&#39;s Blog</title>
+<meta name="title" content="介绍一款 zsh 终端超实用主题：「spaceship」 • Xuer's Blog">
+<meta name="description" content="">
+<meta name="author" content="Xuer">
+
+<!-- Theme Colour -->
+<meta name="theme-color" content="#fafafa">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="介绍一款 zsh 终端超实用主题：「spaceship」">
+<meta property="og:description" content="">
+<meta property="og:url" content="https://www.xuer.tech/posts/zsh-theme-spaceship/">
+<meta property="og:site_name" content="Xuer's Blog">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://www.xuer.tech/og-image/zsh-theme-spaceship.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:author" content="Xuer"><meta property="article:published_time" content="2022-04-09T00:00:00.000Z">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://www.xuer.tech/posts/zsh-theme-spaceship/">
+<meta property="twitter:title" content="介绍一款 zsh 终端超实用主题：「spaceship」">
+<meta property="twitter:description" content="">
+<meta property="twitter:image" content="https://www.xuer.tech/og-image/zsh-theme-spaceship.png">
+
+<!-- RSS auto-discovery -->
+<link rel="alternate" type="application/rss+xml" title="Xuer's Blog" href="/rss.xml">
+		<script>(function(){const siteConfig = {"author":"Xuer","title":"Xuer's Blog","description":"记录知识和生活","lang":"en-GB","ogLocale":"en_GB","githubUrl":"https://github.com/liuxingyu521/blog","themeColorLight":"#fafafa","themeColorDark":"#1d1f21","recentPosts":10};
+
+			const root = document.documentElement;
+			const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
+
+			// get user preference of dark mode, 1st local storage, 2nd browser
+			function getThemePreference() {
+				if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+					return localStorage.getItem("theme");
+				}
+				return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+			}
+
+			const isDark = getThemePreference() === "dark";
+			// watch document element class attribute and update user preference when it changes.
+			const observer = new MutationObserver(() => {
+				const rootIsDark = root.getAttribute('data-theme') === 'dark';
+				// set the meta attribute
+				colorThemeMetaTag.setAttribute(
+					"content",
+					siteConfig[rootIsDark ? "themeColorDark" : "themeColorLight"]
+				);
+
+        localStorage.setItem('theme', rootIsDark ? 'dark' : 'light')
+			});
+			observer.observe(root, { attributeFilter: ["data-theme"] });
+
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute("data-theme", isDark ? 'dark' : 'light');
+
+      } else
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme")
+        );
+		})();</script>
+    
+	<link rel="stylesheet" href="/_astro/_post_.c369ed24.css" /><script type="module" src="/_astro/hoisted.d84b49f0.js"></script>
+<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
+	<body>
+		<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-1.5 focus:left-1">skip to content
+</a>
+		
+
+<header id="main-header" class="group relative mb-10 flex items-center sm:pl-[4.5rem]">
+	<div class="flex sm:flex-col">
+		<a href="/" class="inline-flex items-center sm:relative sm:inline-block">
+      <img src="/_astro/headImg.dff5c9c7.png" alt="headImg" class="mr-3 h-16 w-16 sm:absolute sm:left-[-5.5rem] sm:top-[-0.8rem] sm:mr-0 sm:h-20 sm:w-20">
+			<span class="text-xl font-bold sm:text-2xl">Xuer&#39;s Blog</span>
+		</a>
+		<nav id="navigation-menu" class="absolute -inset-x-4 top-16 hidden flex-col items-end gap-y-4 rounded-md bg-[color:var(--theme-menu-bg)] py-4 text-accent shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:mt-1 sm:-ml-4 sm:flex sm:flex-row sm:items-center sm:divide-x sm:divide-dashed sm:divide-accent sm:rounded-none sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none" aria-label="Main menu">
+			<a href="/" class="py-4 px-4 sm:py-0 sm:underline-offset-4 sm:hover:underline self-center font-bold" style="" rel="prefetch" target="_self">
+						主页
+					</a><a href="/archive" class="py-4 px-4 sm:py-0 sm:underline-offset-4 sm:hover:underline self-center font-bold" style="" rel="prefetch" target="_self">
+						归档
+					</a><a href="/tags" class="py-4 px-4 sm:py-0 sm:underline-offset-4 sm:hover:underline self-center font-bold" style="" rel="prefetch" target="_self">
+						标签
+					</a><a href="/rss.xml" class="py-4 px-4 sm:py-0 sm:underline-offset-4 sm:hover:underline self-center font-bold" style="" rel="prefetch" target="_blank">
+						RSS
+					</a>
+		</nav>
+	</div>
+	
+
+<theme-toggle class="ml-auto">
+	<button type="button" id="toggle-theme" class="group relative h-9 w-9 rounded-md bg-zinc-200 p-2 ring-zinc-400 transition-all hover:ring-2 dark:bg-zinc-700" data-toggle-theme="dark,light" aria-label="Toggle Dark Mode">
+		<svg id="sun-svg" class="absolute top-1/2 left-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all group-aria-pressed:scale-100 group-aria-pressed:opacity-100" aria-hidden="true" focusable="false" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M22 12L23 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M12 2V1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M12 23V22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M20 20L19 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M20 4L19 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M4 20L5 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M4 4L5 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M1 12L2 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+		<svg id="moon-svg" class="absolute top-1/2 left-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all group-aria-[pressed=false]:scale-100 group-aria-[pressed=false]:opacity-100" aria-hidden="true" focusable="false" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"></circle>
+			<path d="M7.63262 3.06689C8.98567 3.35733 9.99999 4.56025 9.99999 6.00007C9.99999 7.65693 8.65685 9.00007 6.99999 9.00007C5.4512 9.00007 4.17653 7.82641 4.01685 6.31997" stroke="currentColor" stroke-width="1.5"></path>
+			<path d="M22 13.0505C21.3647 12.4022 20.4793 12 19.5 12C17.567 12 16 13.567 16 15.5C16 17.2632 17.3039 18.7219 19 18.9646" stroke="currentColor" stroke-width="1.5"></path>
+			<path d="M14.5 8.51L14.51 8.49889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M10 17C11.1046 17 12 16.1046 12 15C12 13.8954 11.1046 13 10 13C8.89543 13 8 13.8954 8 15C8 16.1046 8.89543 17 10 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</button>
+</theme-toggle>
+	<button id="toggle-navigation-menu" class="group relative ml-4 h-7 w-7 sm:invisible sm:hidden" type="button" aria-label="Open main menu" aria-expanded="false" aria-haspopup="menu">
+		<svg id="line-svg" class="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"></path>
+		</svg>
+		<svg id="cross-svg" class="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 text-accent opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100" class="text-accent" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+		</svg>
+	</button>
+</header>
+		<main id="main" class="flex-1">
+			<div class="sm:grid sm:grid-cols-[3fr_1fr] sm:items-start sm:gap-x-10">
+		<article class="break-words">
+			<div id="blog-hero"><h1 class="title mb-3 sm:mb-1">介绍一款 zsh 终端超实用主题：「spaceship」</h1>
+<time datetime="2022-04-09T00:00:00.000Z">2022-04-09</time>
+<div class="mt-1 sm:mt-0 sm:inline sm:before:content-['|']">
+			<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path d="M7.859 6h-2.834a2.025 2.025 0 0 0 -2.025 2.025v2.834c0 .537 .213 1.052 .593 1.432l6.116 6.116a2.025 2.025 0 0 0 2.864 0l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-6.117 -6.116a2.025 2.025 0 0 0 -1.431 -.593z"></path>
+				<path d="M17.573 18.407l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-7.117 -7.116"></path>
+				<path d="M6 9h-.01"></path>
+			</svg>
+			<a class="cactus-link inline-block before:content-['#']" aria-label="View more blogs with the tag vscode" href="/tags/vscode">vscode</a>, <a class="cactus-link inline-block before:content-['#']" aria-label="View more blogs with the tag 设置" href="/tags/设置">设置</a>, <a class="cactus-link inline-block before:content-['#']" aria-label="View more blogs with the tag zsh" href="/tags/zsh">zsh</a>
+		</div>
+<p class="mt-8"></p></div>
+			<div class="prose prose-cactus max-w-[80ch] mt-12 prose-headings:font-semibold prose-headings:before:absolute prose-headings:before:-ml-6 prose-headings:before:text-accent prose-headings:before:content-['#'] prose-th:before:content-none">
+				<p>先看预览图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liuxingyu521/pictureBed@picture/spaceship-preview.png" alt="spaceshippreview"></p>
+<p>当前项目相关信息一目了然~ 如果是 git 项目目录，会展示当前分支。如果是 node 项目，会展示当前包版本以及使用的 node 版本等等，简直不要太明了：）</p>
+<blockquote>
+<p>官方 git 仓库地址：<a href="https://github.com/spaceship-prompt/spaceship-prompt">https://github.com/spaceship-prompt/spaceship-prompt</a></p>
+</blockquote>
+<h2 id="一安装">一、安装</h2>
+<p>安装 spaceship 有 2 个前置依赖，即</p>
+<ol>
+<li>
+<p><a href="https://ohmyz.sh/">zsh</a>：毕竟 spaceship 是 zsh 的主题，安装步骤如下</p>
+<pre is:raw="" class="astro-code" style="background-color: #282A36; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #F8F8F2">sh -c </span><span style="color: #E9F284">"$(</span><span style="color: #F1FA8C">curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh</span><span style="color: #E9F284">)"</span></span></code></pre>
+</li>
+<li>
+<p><a href="https://github.com/powerline/fonts">Powerline Font</a>： 终端显示非 ascii 码的图形，安装步骤如下</p>
+<pre is:raw="" class="astro-code" style="background-color: #282A36; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #6272A4"># clone</span></span>
+<span class="line"><span style="color: #F8F8F2">git clone https://github.com/powerline/fonts.git --depth=1</span></span>
+<span class="line"><span style="color: #6272A4"># install</span></span>
+<span class="line"><span style="color: #8BE9FD">cd</span><span style="color: #F8F8F2"> fonts</span></span>
+<span class="line"><span style="color: #F8F8F2">./install.sh</span></span>
+<span class="line"><span style="color: #6272A4"># clean-up a bit</span></span>
+<span class="line"><span style="color: #8BE9FD">cd</span><span style="color: #F8F8F2"> ..</span></span>
+<span class="line"><span style="color: #F8F8F2">rm -rf fonts</span></span></code></pre>
+</li>
+</ol>
+<p>接下来只需三步开启 spaceship 主题</p>
+<pre is:raw="" class="astro-code" style="background-color: #282A36; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #6272A4"># 1. 克隆 spaceship 源码到 zsh 自定义主题目录</span></span>
+<span class="line"><span style="color: #F8F8F2">$ git clone https://github.com/spaceship-prompt/spaceship-prompt.git </span><span style="color: #E9F284">"</span><span style="color: #BD93F9">$ZSH_CUSTOM</span><span style="color: #F1FA8C">/themes/spaceship-prompt</span><span style="color: #E9F284">"</span><span style="color: #F8F8F2"> --depth=1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6272A4"># 2. 将 spaceship 主题二进制文件软链到 zsh 主题目录</span></span>
+<span class="line"><span style="color: #F8F8F2">$ ln -s </span><span style="color: #E9F284">"</span><span style="color: #BD93F9">$ZSH_CUSTOM</span><span style="color: #F1FA8C">/themes/spaceship-prompt/spaceship.zsh-theme</span><span style="color: #E9F284">"</span><span style="color: #F8F8F2"> </span><span style="color: #E9F284">"</span><span style="color: #BD93F9">$ZSH_CUSTOM</span><span style="color: #F1FA8C">/themes/spaceship.zsh-theme</span><span style="color: #E9F284">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6272A4"># 3. 在 ~/.zshrc 文件里添加 `ZSH_THEME="spaceship` 即开启</span></span></code></pre>
+<h2 id="二配置">二、配置</h2>
+<ul>
+<li>
+<p>iterm2 需配置字体选项</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liuxingyu521/pictureBed@picture/iterm2-spaceship-font-setting.png" alt="iterm 配置 powerline 字体"></p>
+</li>
+<li>
+<p>VS Code 需配置终端字体</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liuxingyu521/pictureBed@picture/VsCode-powerline-font-setting.png" alt="VS Code配置 powerline 字体"></p>
+</li>
+</ul>
+			</div>
+		</article>
+		<aside class="hidden text-right sm:sticky sm:top-20 sm:block">
+			<h2 class="font-semibold">目录</h2>
+			<ul class="mt-4 space-y-2 text-xs">
+				<li class="line-clamp-2 hover:text-accent">
+							<a href="#一安装" aria-label="Scroll to section: 一、安装">
+								<span>&#35;</span> 一、安装
+							</a>
+						</li><li class="line-clamp-2 hover:text-accent">
+							<a href="#二配置" aria-label="Scroll to section: 二、配置">
+								<span>&#35;</span> 二、配置
+							</a>
+						</li>
+			</ul>
+		</aside>
+	</div><button id="to-top-btn" class="z-90 fixed bottom-8 right-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-zinc-200 text-3xl opacity-0 transition-all duration-300 hover:border-zinc-400 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 dark:bg-zinc-700 sm:right-8 sm:h-12 sm:w-12" aria-label="Back to Top" data-show="false"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
+		</svg>
+	</button>
+		</main>
+		<footer class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pt-20 pb-4 text-center align-top text-gray-500 sm:flex-row sm:justify-between sm:text-xs">
+	<div class="mr-0 sm:mr-4">
+		Copyright &copy; 2023
+		<span aria-label="heart emoji"> 💌 </span>
+		Xuer
+	</div>
+  <div class="flex flex-wrap justify-center items-center gap-x-4 sm:items-center">
+	<p>Social Links → </p>
+	<ul class="flex flex-1 items-center gap-x-4 sm:flex-initial">
+		<li>
+			<a class="inline-block p-2 sm:hover:text-link" href="https://github.com/liuxingyu521" target="_blank" rel="noopener noreferrer">
+				<svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+					<path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5">
+					</path>
+				</svg>
+				<span class="sr-only">Github</span>
+			</a>
+		</li>
+		<li>
+			<a class="inline-block p-2 sm:hover:text-link" href="https://codepen.io/liuxingyu" target="_blank" rel="noopener noreferrer">
+        <svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M3 15l9 6l9 -6l-9 -6l-9 6"></path>
+          <path d="M3 9l9 6l9 -6l-9 -6l-9 6"></path>
+          <line x1="3" y1="9" x2="3" y2="15"></line>
+          <line x1="21" y1="9" x2="21" y2="15"></line>
+          <line x1="12" y1="3" x2="12" y2="9"></line>
+          <line x1="12" y1="15" x2="12" y2="21"></line>
+        </svg>
+				<span class="sr-only">Twitter</span>
+			</a>
+		</li>
+		<li>
+			<a class="inline-block p-2 sm:hover:text-link" href="mailto:xuj_power@qq.com">
+				<svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+					<rect x="3" y="5" width="18" height="14" rx="2"></rect>
+					<polyline points="3 7 12 13 21 7"></polyline>
+				</svg>
+				<span class="sr-only">Email</span>
+			</a>
+		</li>
+	</ul>
+</div>
+</footer>
+	</body></html>
