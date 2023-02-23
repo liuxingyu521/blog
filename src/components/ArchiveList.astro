@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostPreview from './blog/PostPreview.astro';
+
+interface Props {
+  yearPosts: {
+    year: number | string,
+    posts: CollectionEntry<"post">[]
+  }[]
+}
+
+const { yearPosts } = Astro.props;
+---
+
+<div class="archive-list mb-10">
+  {
+    yearPosts.map(({year, posts}) => {
+      return <section>
+          <a class="inline-block text-2xl font-bold mb-4 text-accent" href={`/archive/${year}`}>{year}</a>
+          <slot name="under-year" />
+          <ul class="space-y-8 text-left sm:ml-8 mb-10">
+            {
+              posts.map((p) => (
+                <li class="flex flex-wrap gap-x-2 sm:flex-row [&_q]:w-full">
+                  <PostPreview post={p} as="h2" withDesc dateFormat="MM-DD" tight />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+    })
+  }
+</div>

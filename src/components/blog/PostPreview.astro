@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { IElement } from "@/data/shared";
+import { getFormattedDate } from "@/utils";
+
+interface Props extends IElement {
+	post: CollectionEntry<"post">;
+	withDesc?: boolean;
+  /** 紧凑布局 */
+	tight?: boolean;
+  dateFormat?: string;
+}
+
+const { post, as: Element = "div", withDesc = false, dateFormat, tight } = Astro.props;
+const date = new Date(post.data.publishDate);
+const datetime = date.toISOString();
+const postDate = getFormattedDate(date, dateFormat);
+---
+
+<time datetime={datetime} class="text-gray-500 mr-4">{postDate}</time>
+<div class="flex flex-col flex-1">
+  <Element>
+    <a href={`/posts/${post.slug}`} class="cactus-link break-all" rel="prefetch">
+      {post.data.title}
+    </a>
+  </Element>
+  {withDesc && post.data.description && <q class="mt-2 block italic line-clamp-3 text-sm text-gray-500/80">{post.data.description}</q>}
+</div>

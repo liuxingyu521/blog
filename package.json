@@ -1,55 +1,56 @@
 {
-  "name": "xuer-blog",
-  "title": "Xuer Blog",
-  "version": "1.0.1",
-  "homepage": "http://liuxingyu521.github.io/blog",
-  "author": "Xuer",
-  "devDependencies": {
-    "commitizen": "^4.1.2",
-    "cz-emoji": "1.2.1",
-    "del": "^5.1.0",
-    "eslint": "^6.8.0",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-csso": "^4.0.1",
-    "gulp-less": "^4.0.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-uglify": "^3.0.2",
-    "husky": ">=4",
-    "lint-staged": ">=10",
-    "stylelint": "^13.2.0",
-    "stylelint-config-standard": "^20.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/liuxingyu521/blog"
-  },
-  "scripts": {
-    "commit": "git-cz",
-    "dep-build": "gulp"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-emoji"
-    }
-  },
-  "license": "ISC",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.{no-scss,no-less,no-css}": [
-      "prettier --write",
-      "stylelint --fix"
-    ],
-    "*.{json,md}": [
-      "prettier --write"
-    ]
-  }
+	"name": "astro-cactus",
+	"version": "2.0.3",
+	"private": false,
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"sync": "astro sync",
+		"build": "astro build",
+		"preview": "astro preview",
+		"format": "prettier -w ./src ./src/**/*.astro"
+	},
+	"devDependencies": {
+		"@astrojs/image": "0.13.0",
+		"@astrojs/mdx": "^0.15.1",
+		"@astrojs/sitemap": "^1.0.0",
+		"@astrojs/tailwind": "3.0.0",
+		"@resvg/resvg-js": "^2.2.0",
+		"@tailwindcss/aspect-ratio": "^0.4.2",
+		"@tailwindcss/line-clamp": "^0.4.2",
+		"@tailwindcss/typography": "^0.5.8",
+		"@types/eslint": "^8.4.10",
+		"@types/prettier": "^2.7.2",
+		"@typescript-eslint/eslint-plugin": "^5.48.0",
+		"@typescript-eslint/parser": "^5.48.0",
+		"astro-eslint-parser": "^0.11.0",
+		"autoprefixer": "^10.4.13",
+		"eslint": "^8.32.0",
+		"eslint-config-prettier": "^8.6.0",
+		"eslint-import-resolver-typescript": "^3.5.2",
+		"eslint-plugin-astro": "^0.23.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"eslint-plugin-prettier": "^4.2.1",
+		"postcss": "^8.4.21",
+		"postcss-html": "^1.5.0",
+		"prettier": "^2.8.3",
+		"prettier-plugin-astro": "0.8.0",
+		"prettier-plugin-tailwindcss": "^0.2.2",
+		"stylelint": "^14.16.1",
+		"stylelint-config-prettier": "^9.0.4",
+		"stylelint-config-standard": "^29.0.0",
+		"tailwindcss": "^3.2.4",
+		"typescript": "^4.9.4"
+	},
+	"dependencies": {
+		"@astrojs/prefetch": "^0.1.1",
+		"@astrojs/rss": "^2.0.0",
+		"astro": "2.0.2",
+		"daisyui": "^2.51.0",
+		"dayjs": "^1.11.7",
+		"satori": "0.1.2",
+		"satori-html": "^0.3.2",
+		"theme-change": "^2.3.0"
+	}
 }

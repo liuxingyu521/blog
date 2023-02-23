@@ -1,4 +1,6 @@
-### 我的个人博客([Xuer's Blog](https://liuxingyu521.github.io/blog/))
+### 我的个人博客([Xuer's Blog](https://www.xuer.tech/))
+
+这是 v2 版本，基于 `Astro`, `astro-theme-cactus` 主题 DIY 制作
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 

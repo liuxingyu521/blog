@@ -1,3 +1,4 @@
-node_modules/*
-js/toc.min.js
-js/xuer-blog.min.js
+dist
+node_modules
+.github
+.changeset

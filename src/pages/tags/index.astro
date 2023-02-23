@@ -1,0 +1,35 @@
+---
+import PageLayout from "@/layouts/Base";
+import { getUniqueTagsWithCount } from "@/utils";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("post");
+const allTags = getUniqueTagsWithCount(allPosts);
+
+const meta = {
+	title: "标签",
+	description: "博客内的所有标签",
+};
+---
+
+<PageLayout meta={meta}>
+	<h1 class="title mb-6">标签</h1>
+	<ul class="grid grid-cols-2 sm:grid-cols-3 gap-x-2 gap-y-6 sm:gap-6">
+		{
+			allTags.map(({name, count}) => (
+				<li class="flex items-center gap-x-2 justify-center">
+					<a
+						class="cactus-link inline-block"
+						href={`/tags/${name}`}
+						title={`View posts with the tag: ${name}`}
+						rel="prefetch"
+					>
+						&#35;{name}
+					</a>
+					<span class="inline-block text-sm"> {count}篇
+					</span>
+				</li>
+			))
+		}
+	</ul>
+</PageLayout>

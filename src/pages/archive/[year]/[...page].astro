@@ -1,0 +1,60 @@
+---
+import type { Page, GetStaticPathsOptions } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import PageLayout from "@/layouts/Base";
+import Pagination from "@/components/Paginator";
+import { getYearPosts } from "@/utils";
+import ArchiveList from "@/components/ArchiveList";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+	const posts: CollectionEntry<"post">[] = await getCollection("post");
+  const yearPosts = getYearPosts(posts)
+
+  return yearPosts.map(({year, posts}) => {
+    return paginate(posts, {params: {year}, pageSize: 10, props: {totalPosts: posts.length}})
+  })
+}
+
+
+interface Props {
+	page: Page<CollectionEntry<"post">>;
+	totalPosts: number;
+}
+
+const { page, totalPosts } = Astro.props;
+const { year = '' } = Astro.params;
+
+const meta = {
+	title: "归档",
+	description: `${year} 年博客归档`,
+};
+
+const yearPosts = [{year, posts: page.data}]
+
+const paginationProps = {
+	...(page.url.prev && {
+		prevUrl: {
+			url: page.url.prev,
+			text: `← 上一页`,
+		},
+	}),
+	...(page.url.next && {
+		nextUrl: {
+			url: page.url.next,
+			text: `下一页 →`,
+		},
+	}),
+};
+---
+
+<PageLayout meta={meta}>
+	<div class="grid gap-y-16 sm:grid-cols-1fr sm:gap-x-8">
+    <section aria-label="Blog post list">
+      <ArchiveList yearPosts={yearPosts}>
+        <p slot="under-year" class="mb-6">{totalPosts >= 10 && <span class="mr-2">🎉</span>}这一年总共写了 {totalPosts} 篇~</p>
+      </ArchiveList>
+			<Pagination {...paginationProps} />
+		</section>
+	</div>
+</PageLayout>
