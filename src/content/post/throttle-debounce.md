@@ -25,28 +25,28 @@ _实现原理_ ： 本质是一个高阶函数的运用，以函数作为参数�
  * @param  {Boolean} isFirstExec 第一次触发是否执行
  */
 function throttle(func, delay, isFirstExec) {
-	// 闭包内维护的计时器
-	var timer = null;
+ // 闭包内维护的计时器
+ var timer = null;
 
-	return function () {
-		var _this = this,
-			args = arguments;
+ return function () {
+  var _this = this,
+   args = arguments;
 
-		// 第一次是否执行
-		if (isFirstExec) {
-			func.apply(_this, args);
-			isFirstExec = false;
-		}
+  // 第一次是否执行
+  if (isFirstExec) {
+   func.apply(_this, args);
+   isFirstExec = false;
+  }
 
-		// 如果还在上一个计时时间内，不作处理
-		if (timer) return;
+  // 如果还在上一个计时时间内，不作处理
+  if (timer) return;
 
-		// 否则，设定延迟时间后执行高频率函数
-		timer = setTimeout(function () {
-			timer = null;
-			func.apply(_this, args);
-		}, delay);
-	};
+  // 否则，设定延迟时间后执行高频率函数
+  timer = setTimeout(function () {
+   timer = null;
+   func.apply(_this, args);
+  }, delay);
+ };
 }
 ```
 
@@ -54,26 +54,26 @@ function throttle(func, delay, isFirstExec) {
 
 ```js
 function throttle2(func, delay, isFirstExec) {
-	var lastTime = new Date().getTime(),
-		curTime = null;
+ var lastTime = new Date().getTime(),
+  curTime = null;
 
-	return function () {
-		var args = arguments;
-		curTime = new Date().getTime();
+ return function () {
+  var args = arguments;
+  curTime = new Date().getTime();
 
-		if (isFirstExec) {
-			func.apply(this, args);
-			lastTime = curTime;
+  if (isFirstExec) {
+   func.apply(this, args);
+   lastTime = curTime;
 
-			isFirstExec = false;
-			return;
-		}
+   isFirstExec = false;
+   return;
+  }
 
-		if (curTime - lastTime > delay) {
-			func.apply(this, args);
-			lastTime = curTime;
-		}
-	};
+  if (curTime - lastTime > delay) {
+   func.apply(this, args);
+   lastTime = curTime;
+  }
+ };
 }
 ```
 
@@ -89,26 +89,26 @@ function throttle2(func, delay, isFirstExec) {
  * @param  {Boolean} isFirstExec 第一次触发是否执行
  */
 function debounce(func, delay, isFirstExec) {
-	var timer = null;
+ var timer = null;
 
-	return function () {
-		var _this = this,
-			args = arguments;
+ return function () {
+  var _this = this,
+   args = arguments;
 
-		if (isFirstExec) {
-			func.apply(_this, args);
-			isFirstExec = false;
-		}
+  if (isFirstExec) {
+   func.apply(_this, args);
+   isFirstExec = false;
+  }
 
-		// 清掉计时器，重新计时
-		if (timer) {
-			clearTimeout(timer);
-		}
+  // 清掉计时器，重新计时
+  if (timer) {
+   clearTimeout(timer);
+  }
 
-		timer = setTimeout(function () {
-			func.apply(_this, args);
-		}, delay);
-	};
+  timer = setTimeout(function () {
+   func.apply(_this, args);
+  }, delay);
+ };
 }
 ```
 

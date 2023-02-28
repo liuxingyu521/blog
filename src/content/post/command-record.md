@@ -75,14 +75,14 @@ $ nrm del taobao
 
 ### 4. pm2
 
-pm2 是一个守护进程管理器，用来管理自己创建的进程服务等，下面列出一些常用用法
+[pm2](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/) 是一个守护进程管理器，用来管理自己创建的进程服务等，下面列出一些常用用法
 
 ```shell
 # 首先全局安装一下 pm2
 $ npm install -g pm2
 
 # 1. 创建一个进程
-$ pm2 start ${要运行的脚本路径 || 命令}
+$ pm2 start ${要运行的脚本路径 || 命令} --name ${pm2进程名字}
 
 # 2. 查看 pm2 管理的进程列表
 $ pm2 list
@@ -100,6 +100,12 @@ $ pm2 start ${脚本} -- -p 9999
 # 6. 动态查看 pm2 日志
 # 此示例查看最近 200 行的日志，加 --lines 参数
 $ pm2 logs --lines 200
+
+# 7. 设置 pm2 开机自动重启
+$ pm2 startup
+
+# 8. 冻结当前pm2程序，在开机的时候自动重启
+$ pm2 save
 ```
 
 ## linux 系统相关

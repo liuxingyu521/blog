@@ -5,8 +5,6 @@ description: "异步」，经常会碰到的东西，如何优雅的解决，Pro
 tags: ["JavaScript", "知识点"]
 ---
 
-# promise
-
 > Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。ES6 将其写进了语言标准，统一了用法，原生提供了`Promise`对象。
 >
 > -- 选自阮一峰博客 -> [Promise](http://es6.ruanyifeng.com/#docs/promise)
@@ -38,12 +36,12 @@ promise.then(function(resolved_param){
 
 ```javascript
 getJSON("/posts.json")
-	.then(function (json) {
-		return json.post;
-	})
-	.then(function (post) {
-		// ...
-	});
+ .then(function (json) {
+  return json.post;
+ })
+ .then(function (post) {
+  // ...
+ });
 ```
 
 **then** 方法可以链式调用，参数是上一个 then 函数的返回值。
@@ -70,21 +68,21 @@ Promise 里的错误会沿着链一直传递下去，直到遇到 reject 的回�
 ```javascript
 // 写法一
 var promise = new Promise(function (resolve, reject) {
-	try {
-		throw new Error("throw a error");
-	} catch (e) {
-		reject(e);
-	}
+ try {
+  throw new Error("throw a error");
+ } catch (e) {
+  reject(e);
+ }
 });
 promise.catch(function (error) {
-	console.log(error);
+ console.log(error);
 });
 // 写法二
 var promise = new Promise(function (resolve, reject) {
-	reject(new Error("test"));
+ reject(new Error("test"));
 });
 promise.catch(function (error) {
-	console.log(error);
+ console.log(error);
 });
 ```
 
@@ -117,7 +115,7 @@ var p = Promise.race([p1, p2, p3]);
 var p = Promise.resolve([param]);
 // 等同于
 var p = new Promise(function (resolve, reject) {
-	resolve([param]);
+ resolve([param]);
 });
 ```
 
@@ -135,7 +133,7 @@ Promise.resolve()会直接返回当前 Promise 对象。
 const p = Promise.resolve("Hello");
 
 p.then(function (s) {
-	console.log(s);
+ console.log(s);
 });
 // Hello
 ```
@@ -150,11 +148,11 @@ p.then(function (s) {
 
 ```javascript
 setTimeout(function () {
-	console.log("three");
+ console.log("three");
 }, 0);
 
 Promise.resolve().then(function () {
-	console.log("two");
+ console.log("two");
 });
 
 console.log("one");
@@ -170,9 +168,9 @@ console.log("one");
 
 ```javascript
 let thenable = {
-	then: function (resolve, reject) {
-		resolve(42);
-	}
+ then: function (resolve, reject) {
+  resolve(42);
+ }
 };
 ```
 
@@ -180,14 +178,14 @@ let thenable = {
 
 ```javascript
 let thenable = {
-	then: function (resolve, reject) {
-		resolve(42);
-	}
+ then: function (resolve, reject) {
+  resolve(42);
+ }
 };
 
 let p1 = Promise.resolve(thenable);
 p1.then(function (value) {
-	console.log(value); // 42
+ console.log(value); // 42
 });
 ```
 
@@ -203,7 +201,7 @@ const p = Promise.reject("出错了");
 const p = new Promise((resolve, reject) => reject("出错了"));
 
 p.then(null, function (s) {
-	console.log(s);
+ console.log(s);
 });
 // 出错了
 ```
@@ -214,13 +212,13 @@ p.then(null, function (s) {
 
 ```javascript
 const thenable = {
-	then(resolve, reject) {
-		reject("出错了");
-	}
+ then(resolve, reject) {
+  reject("出错了");
+ }
 };
 
 Promise.reject(thenable).catch((e) => {
-	console.log(e === thenable);
+ console.log(e === thenable);
 });
 // true
 ```
