@@ -43,7 +43,6 @@ module.exports = {
 						"--tw-prose-bold": "var(--theme-text)",
 						"--tw-prose-bullets": "var(--theme-text)",
 						"--tw-prose-quotes": "var(--theme-quote)",
-						// "--tw-prose-code": theme("code"),
 						"--tw-prose-hr": "0.5px dashed #666",
 						"--tw-prose-th-borders": "#666",
 						"--tw-prose-code": theme("colors.pink[900]"),

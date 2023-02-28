@@ -4,21 +4,37 @@
 			super();
 			const button = this.querySelector("button") as HTMLButtonElement;
 
-			function setThemeIcon(dark: boolean) {
+			function setTheme(dark: boolean, delay = 0) {
 				// set the aria-pressed attribute, dark mode === aria-pressed=true
 				button.setAttribute("aria-pressed", String(dark));
+
+				function sendMessage<T>(message: T) {
+					const iframe = document.querySelector<HTMLIFrameElement>("iframe.giscus-frame");
+					if (!iframe) return;
+					iframe.contentWindow?.postMessage({ giscus: message }, "https://giscus.app");
+				}
+
+				setTimeout(() => {
+          sendMessage({
+            setConfig: {
+              theme: dark
+                ? "https://xuer.tech/css/giscus-custom-dark.css"
+                : "https://xuer.tech/css/giscus-custom-light.css",
+            },
+          });
+        }, delay)
 			}
 
 			// button clicked, toggle dark mode
-			button.addEventListener("click", () => setThemeIcon(!this.isDark()));
+			button.addEventListener("click", () => setTheme(!this.isDark()));
 
 			// Initalise button state
-			setThemeIcon(this.isDark());
+			setTheme(this.isDark(), 3000);
 		}
 
 		// returns if the root element contains the dark class
 		isDark() {
-			return document.documentElement.getAttribute("data-theme") === 'dark';
+			return document.documentElement.getAttribute("data-theme") === "dark";
 		}
 	}
 
@@ -30,7 +46,7 @@
 		type="button"
 		id="toggle-theme"
 		class="group relative h-9 w-9 rounded-md bg-zinc-200 p-2 ring-zinc-400 transition-all hover:ring-2 dark:bg-zinc-700"
-    data-toggle-theme="dark,light"
+		data-toggle-theme="dark,light"
 		aria-label="Toggle Dark Mode"
 	>
 		<svg

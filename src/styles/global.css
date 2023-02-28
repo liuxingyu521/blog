@@ -29,6 +29,10 @@
   html body {
     @apply mx-auto flex h-full max-w-4xl flex-col px-8 pt-16 font-mono text-base font-normal antialiased;
   }
+
+  .giscus {
+    margin-top: 4rem;
+  }
 }
 @tailwind components;
 @tailwind utilities;
