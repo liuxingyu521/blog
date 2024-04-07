@@ -1,4 +1,5 @@
 ### 我的个人博客([Xuer's Blog](https://www.xuer.tech/))
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fec3724a-c08a-4f5e-94fe-b74009397145/deploy-status)](https://app.netlify.com/sites/xuer-blog/deploys)
 
 这是 v2 版本，基于 `Astro`, `astro-theme-cactus` 主题 DIY 制作
 
