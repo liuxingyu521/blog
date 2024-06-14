@@ -30,6 +30,11 @@
     @apply mx-auto flex h-full max-w-4xl flex-col px-8 pt-16 font-mono text-base font-normal antialiased;
   }
 
+  .prose p > code {
+    border-radius: var(--rounded-btn);
+    padding: 4px 10px;
+  }
+
   .giscus {
     margin-top: 4rem;
   }
