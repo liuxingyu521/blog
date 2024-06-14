@@ -6,10 +6,12 @@ const siteMeta = {
 	ogLocale: "en_GB",
 	githubUrl: "https://github.com/liuxingyu521/blog",
 	themeColorLight: "#fafafa",
-	themeColorDark: "#1d1f21",
+	themeColorDark: "#2b303b",
 
 	/** recent posts counts */
 	recentPosts: 10,
+	/** 移动端调试开关 */
+	isMobileDebugMode: false,
 };
 
 export default siteMeta;

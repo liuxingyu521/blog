@@ -9,7 +9,11 @@ export default defineConfig({
 	site: "https://www.xuer.tech",
 	markdown: {
 		shikiConfig: {
-			theme: "dracula",
+			theme: "one-dark-pro",
+      themes: {
+        light: 'vitesse-light',
+        dark: 'vitesse-dark',
+      },
 			wrap: false,
 		},
 	},
@@ -27,5 +31,8 @@ export default defineConfig({
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
 		},
+	},
+	server: {
+		host: "0.0.0.0"
 	},
 });

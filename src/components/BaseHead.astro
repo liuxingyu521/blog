@@ -96,3 +96,13 @@ const socialImageURL = new URL(
     y.parentNode.insertBefore(t, y);
   })(window, document, "clarity", "script", "lsqskfmij9");
 </script>
+
+<!-- 启动移动端调试 -->
+{
+	siteConfig.isMobileDebugMode && (
+		<>
+			<script is:inline src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js" />
+			<script>new VConsole();</script>
+		</>
+	)
+}

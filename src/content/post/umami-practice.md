@@ -103,7 +103,7 @@ git clone https://github.com/umami-software/umami.git
 
     可以参考[文档](https://umami.is/docs/environment-variables#:~:text=npm%20start.-,CLIENT_IP_HEADER,-%3D%20%3Cheader%20name%3E)设置对应的客户端 ip Headers。如果使用的是 `nginx` 代理，需要在 `umami` 服务代理配置文件中添加如下设置
 
-    ```txt
+    ```nginx
     server {
       ...
 
