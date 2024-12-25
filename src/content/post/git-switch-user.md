@@ -1,5 +1,5 @@
 ---
-title: git 切换不同用户
+title: git 自动切换不同用户
 description: ''
 publishDate: 2024-12-24
 tags:
@@ -72,7 +72,7 @@ tags:
 
 在调研过程中，意外还发现了一个手动切换 git 账户的命令行工具 [Git-User-Switch](https://github.com/geongeorge/Git-User-Switch)，使用上也很方便。
 
-首先它是个 node 脚本，需要安装 node 环境，然后只需要 `npm i -g git-user-switch` 即可。
+首先它是个 node 脚本，需要安装 node 环境，然后 `npm i -g git-user-switch` 全局安装命令。
 
 在命令行输入 `git-user`，就可以在当前可使用的 git 账户列表中选择对应的账户
 
@@ -86,8 +86,8 @@ Current git user(local) is name1:xx@xx.com
   Add new user
 ```
 
-## 结尾
+## 总结
 
 使用 `.gitconfig` 文件配置以及 `git-user` 可以方便的切换不同的 git 账户，快使用起来吧~
 
-（ps. 如果的确使用了错误的账户信息进行了提交，可以先切换到正确的 git 账户，然后使用 `git commit --amend --reset-author` 命令重新提交一遍即可，不过这个只针对前一次提交可用~）
+（ps. 如果的确使用了错误的账户信息进行了提交，可以先切换到正确的 git 账户，然后使用 `git commit --amend --reset-author` 命令重新提交一下就会修改为正确的提交人信息，不过这个只针对前一次提交可用）
