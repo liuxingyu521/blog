@@ -139,6 +139,9 @@ $ lsof -i:3000
 $ ssh-keygen -t rsa -C "邮箱地址" -f "生成的文件名"
 
 # 因为 ssh 默认只会读取 .ssh/id_rsa 秘钥
-# 所以需要使用 ssh-add 手动把秘钥放到 ssh 的读取配置中
+# 所以需要使用 ssh-add 手动把秘钥放到 ssh 的读取配置中(临时)
 $ ssh-add "秘钥路径"
+
+# 如果系统启动时默认加载其他秘钥，使用以下命令（仅限 macos）
+$ ssh-add --apple-use-keychain "其他秘钥的路径"
 ```
